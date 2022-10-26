@@ -1,0 +1,32 @@
+<body>
+
+  <div class="w3-show-inline-block">
+
+    <a mat-fab color="primary" class="mt-4 ml-4  float-left" [href]="'/Pole/Perimetre'">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </a>
+
+  </div>
+
+  <section class="mini " id="work-process">
+    <div class="mini-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3" *ngFor="let matrix of matrixes">
+            <div class="mini-box">
+              <a [href]="'Modulequiz/Responsablequiz/Matrixes/Quizzes?name='+ matrix.name">
+                <i><img class="imageresize" src="assets/skills-matix-icon.jpeg" width="110" height="160" alt=""></i>
+                <strong>{{matrix.name}}</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</body>
+<footer>
+  <app-footer></app-footer>
+</footer>

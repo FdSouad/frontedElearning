@@ -1,0 +1,122 @@
+<div class="container">
+  <mat-card >
+    <div class="modal-header">
+      <strong><h2 class="modal-title ">Add new competence</h2></strong>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <span class="modal-body">
+  <br>
+
+<form [formGroup]="competenceForm"  (submit)="addCompetence()">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+        <br>
+      <mat-form-field appearance="outline">
+          <mat-label>Id Category</mat-label>
+          <input matInput formControlName="idCategory">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Critcite</mat-label>
+          <input matInput formControlName="criticite">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Niveau Minimum</mat-label>
+          <input matInput formControlName="niveauMin">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Niveau cible</mat-label>
+          <input matInput formControlName="niveauCible">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Type</mat-label>
+          <input matInput formControlName="type">
+        </mat-form-field>
+
+
+<!--  <div formArrayName="questions">-->
+<!--          <div-->
+<!--            class="form-group row mb-2"-->
+<!--            *ngFor="let question of data.question; let i = index"-->
+<!--          >-->
+
+<!--            <div class="col-md-8">-->
+<!--              <input-->
+<!--                class="form-control"-->
+<!--                [id]="i"-->
+<!--                type="text"-->
+<!--                placeholder="{{ 'Question ' + (i+1) }}"-->
+<!--                [formControlName]="i"-->
+<!--              />-->
+<!--            </div>-->
+<!--            <button-->
+<!--              class="col-md-4 btn btn-outline-danger btn-sm"-->
+<!--              type="button"-->
+<!--              title="Delete this search question"-->
+<!--              (click)="deleteQuestion(i)"-->
+<!--            >-->
+<!--              Supprimer-->
+<!--            </button>-->
+
+<!--            <div class="col-md-8">-->
+<!--              <input-->
+<!--                class="form-control"-->
+<!--                [id]="i+1"-->
+<!--                type="text"-->
+<!--                placeholder="{{ 'Reponse ' + (i+1) }}"-->
+<!--                [formControlName]="i"-->
+<!--              />-->
+<!--              <input-->
+<!--                class="form-control"-->
+<!--                [id]="i+2"-->
+<!--                type="text"-->
+<!--                placeholder="{{ 'Reponse ' + (i+2) }}"-->
+<!--                [formControlName]="i"-->
+<!--              />-->
+<!--              <input-->
+<!--                class="form-control"-->
+<!--                [id]="i+3"-->
+<!--                type="text"-->
+<!--                placeholder="{{ 'Reponse ' + (i+3) }}"-->
+<!--                [formControlName]="i"-->
+<!--              />-->
+<!--              <input-->
+<!--                class="form-control"-->
+<!--                [id]="i+4"-->
+<!--                type="text"-->
+<!--                placeholder="{{ 'Reponse ' + (i+4) }}"-->
+<!--                [formControlName]="i"-->
+<!--              />-->
+<!--            </div>-->
+
+
+<!--          </div>-->
+<!--        </div>-->
+<!--   <div class="row">-->
+<!--          <div class="col-md-3 mb-2">-->
+<!--            <button-->
+<!--              class="btn btn-outline-primary btn-sm"-->
+<!--              type="button"-->
+<!--              title="Ajouter une question"-->
+<!--              (click)="addQuestion()"-->
+<!--            >-->
+<!--              Ajouter une question-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>done</mat-icon>
+          Add
+        </button>
+      </form>
+    </span>
+  </mat-card>
+</div>

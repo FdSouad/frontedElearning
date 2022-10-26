@@ -1,0 +1,77 @@
+{
+  "posts": [
+    {
+      "id": 4,
+      "title": "java",
+      "description": "java",
+      "image": "assets/j.png"
+    },
+    {
+      "id": 5,
+      "title": "css",
+      "description": "css",
+      "image": "https://grafikart.fr/uploads/icons/css.svg"
+    },
+    {
+      "id": 6,
+      "title": "html",
+      "description": "html",
+      "image": "https://www.hostinger.fr/tutoriels/wp-content/uploads/sites/9/2017/04/differences-html-html5.png"
+    }
+  ],
+  "comments": [
+    {
+      "ques_id": 1,
+      "answer": "css",
+      "content": "la deu question",
+      "option1": "css",
+      "option2": "java",
+      "option3": "html",
+      "quiz_id": 0,
+      "id": 1
+    },
+    {
+      "ques_id": 1,
+      "answer": "css",
+      "content": "what is .....",
+      "image": "",
+      "option1": "css",
+      "option2": "java",
+      "option3": "html",
+      "quiz_id": 5,
+      "id": 2
+    },
+    {
+      "ques_id": 3,
+      "answer": "18h30",
+      "content": "what time is it??",
+      "option1": "19h30",
+      "option2": "18h30",
+      "option3": "19h00",
+      "quiz_id": 0,
+      "id": 3
+    },
+    {
+      "ques_id": 1,
+      "answer": "java",
+      "content": "java",
+      "option1": "java",
+      "option2": "css",
+      "option3": "html",
+      "quiz_id": 0,
+      "id": 4
+    }
+  ],
+  "profile": [
+    {
+      "id": 0,
+      "NomConsultant": "khalid",
+      "image": null
+    },
+    {
+      "id": 1,
+      "NomConsultant": "simo",
+      "image": null
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<br>
+<div class="leftBor" id="downl" #downl>
+  <div class="modal-content">
+    <div class="modal-header">
+        <img class="center"src="assets/testimonial-01.png"width="200" height="200">
+     <br> <h2 class="bleu  ">NOM :{{username}}        Prenom : {{fullname}}
+      </h2>
+     
+    </div>
+    <div class="modal-body">
+      <div class="mx-auto">
+      
+   
+    <div class="mx-auto">
+   <form [formGroup]="editForm"(ngSubmit)="putoperation()">
+   
+    <fieldset class="form-group">    
+          
+      <br>
+      <br>
+      <div class="form-group row">
+        <label   class="col-sm-5 col-form-label siz" for="service">Email </label>
+        <div class="modal-content bordure" style="width: 46rem;">
+{{email}}     
+   </div>
+        <br>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="objectif"  class="col-sm-5 col-form-label siz">Telephone</label>
+        
+            <input   class="modal-content bordure" style="width: 46rem;"class="form-control" formControlName="telephone" id="objectif">
+        
+      </div>
+      <br>
+      <div class="form-group row">
+        <label for="startDate"  class="col-sm-5 col-form-label siz">Role</label>
+        <div style="width: 46rem;">
+            <input  class="modal-content bordure"  formControlName="userType" class="form-control" >
+            <div class="alert alert-dismissible alert-primary">This field is mandatory either <a class="orange">RESPONSABLE</a>  or <a class="orange">ADMIN</a> </div>
+   </div>
+          </div><br>
+        
+  
+      </fieldset>
+     <div class="center ">
+      <button type="button" class="btn btn-secondary" routerLink="/Admin">Close</button>
+       <button type="submit" [disabled]="editForm.invalid" class=" btn btn-primary marB">Modifier</button>
+     </div> 
+  </form>
+  </div>
+  </div>
+  </div>
+  

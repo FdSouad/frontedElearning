@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div style="overflow: hidden" class="mt-1">
+  <div class="container">
+      <strong><h2 class="modal-title ">Add Questions</h2></strong>
+
+
+  <form (submit)="addQuestion()" [formGroup]="questions">
+  <mat-form-field appearance="fill" class="col-9">
+    <mat-label>Question</mat-label>
+    <input matInput formControlName="question">
+  </mat-form-field>
+<br/>
+  <mat-form-field appearance="fill" class="col-5">
+    <mat-label >Answer 1</mat-label>
+    <input matInput formControlName="answer1">
+  </mat-form-field>
+    <button mat-raised-button color="primary" type="button" (click)="Answer1()" [disabled]="correct1">Correct</button>
+    <br/>
+    <mat-form-field appearance="fill" class="col-5">
+      <mat-label>Answer 2</mat-label>
+      <input matInput  formControlName="answer2">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="button" (click)="Answer2()" [disabled]="correct2">Correct</button>
+    <br/>
+    <mat-form-field appearance="fill" class="col-5 ">
+      <mat-label>Answer 3</mat-label>
+      <input matInput  formControlName="answer3">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="button" (click)="Answer3()" [disabled]="correct3">Correct</button>
+   <br/>
+    <button class="col-2 "  mat-raised-button color="accent" type="submit">Ajouter question</button>
+  </form>
+
+    <ul>
+      <li *ngFor="let question of data.questions">
+        <span>{{question.content}}</span>
+        <br/>
+        <p *ngFor="let answer of question.answers">{{answer.content}} est une reponse {{answer.correct}} </p>
+      </li>
+
+    </ul>
+
+  </div>
+</div>
+<app-footer></app-footer>

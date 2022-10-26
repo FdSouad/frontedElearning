@@ -1,0 +1,70 @@
+<!-- <form class="form-group">
+    <label for="texte">photo de profile <span style="color:red">*</span></label>
+    <input type="file" accept="image/*" class="form-control" id="customFile"
+      (change)="onFileChanged($event)" />
+      <button class="btn btn-primary" (click)="onUpload()">send</button>
+ </form> -->
+ <div class="return">
+    <button mat-fab style="background-color:#538B9F"  class="mt-4 ml-4 " [routerLink]="['/home']">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+  </div> 
+  
+   <!-- <div class="container" >
+    <div class="row d-flex justify-content-center align-items-center">
+  
+      <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+        <img id="box" src="../../../assets/mypics/s.png">
+      </div>
+    </div>
+  </div> -->
+  
+  
+  <div class="container" >
+    <!--<a href="#" class="previous round">&#8249; </a>-->
+  
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black border-0">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+  
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-3 mx-1 mx-md-2 mt-2">Change photo</p>
+               
+               
+                <form class="mx-1 mx-md-4">
+                  <div class="d-flex flex-row align-items-center mb-4" >
+                    <div class="form-outline flex-fill mb-0" >
+                      <label for="texte">photo de profile <span style="color:red">*</span></label>
+                      <input type="file" accept="image/*" class="form-control" id="customFile"
+                        (change)="onFileChanged($event)" />
+                       
+                    </div>
+                  </div>
+                 
+  
+                  <div class="d-flex justify-content-center mx-4 mb-3 mt-3 mb-lg-4">
+                    <button type="button" class="btn btn-primary btn-block" id="btn" (click)="onUpload()">send</button>
+                  </div>
+  
+                </form>
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                <img src="assets/mypics/reset.png" class="img-fluid" alt="Sample image">
+                <!-- <img src="assets/RegisterPic.png" class="img-fluid" alt="Sample image"> -->
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+  
+  
+  

@@ -1,0 +1,436 @@
+<!-- Page Content -->
+<div id="page-content-wrapper">
+  <app-navbar></app-navbar>
+
+</div>
+
+<div class="body">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+        aria-label="Slide 4"></button>
+
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../assets/2.jpg" class="d-block w-100" style="height: 350px;" alt="Fourth slide">
+      </div>
+      <div class="carousel-item">
+        <img src="../../assets/3.jpg" class="d-block w-100" style="height: 350px;" alt="jsp slide">
+      </div>
+      <div class="carousel-item ">
+        <img src="../../assets/2.png" class="d-block w-100" style="height: 350px;" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img src="../../assets/1.png" class="d-block w-100" style="height: 350px;" alt="Third slide">
+      </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!--
+<div class="services">
+<div class="container">
+  <h1>Cours à la une</h1>
+  <div class="row">
+
+    <div class="col">
+      <div class="card">
+        <img src="assets/d.jpg" class="card-img-top" alt="Service-1 Image">
+        <div class="card-body">
+          <h5 class="card-title">Cours 1</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit.
+            Donec varius orci eu porttitor volutpat.</p>
+          <a href="#" class="btn btn-primary">Click for more</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="assets/e.jpg" class="card-img-top" alt="Service-2 Image">
+        <div class="card-body">
+          <h5 class="card-title">Cours 2</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit.
+            Donec varius orci eu porttitor volutpat.</p>
+          <a href="#" class="btn btn-primary">Click for more</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="assets/f.jpg" class="card-img-top" alt="Service-3 Image">
+        <div class="card-body">
+          <h5 class="card-title">Cours 3</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit.
+            Donec varius orci eu porttitor volutpat.</p>
+          <a href="#" class="btn btn-primary">Click for more</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <img src="assets/g.jpg" class="card-img-top" alt="Service-4 Image">
+        <div class="card-body">
+          <h5 class="card-title">Cours 4</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis suscipit velit.
+            Donec varius orci eu porttitor volutpat.</p>
+          <a href="#" class="btn btn-primary">Click for more</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>-->
+  <div class="container mx-auto">
+    <br>
+    <div class="mx-4">
+      <div class="mx-4">
+        <h2 class="section__title col-12 col-md-10 mx-4" id="about">About Us <button
+            *ngIf="this.tokenService.isAdmin()==true" type="button" (click)="open(content2)" class="btn btn-primary"><i
+              class="fa-solid fa-plus"></i></button></h2>
+
+        <h3 class="text section__title--miniintro col-12 col-md mx-4" style="color: rgb(21, 67, 96);">Capgemini is a global leader in partnering with companies to transform and manage their business by harnessing the power of technology. The Group is guided evereday by its purpose of unleashin human energy through technology for an inclusive and sustainable future. It is a responsible and diverse organization of 270,000 team members in nearly 50 countries. With its strong 50 year heritage and deep industry expertise, Capegemini is trusted by its clients to adress the entire breadth of their
+          
+          business needs, from strategy and design to operations, fuelled by the fast evolving and innovative world of cloud, data, IA, connectivity, software, digital engineering and platforms. The Group reported in 2020 global revenues of £16 billion.
+         <br><br> Get the Future You Want | www.capgemini.com<br></h3>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col" *ngFor="let a of aboutus ">
+        <div class="card">
+          <img [src]="a.picByte" class="card-img-top" alt="Hollywood Sign on The Hill" />
+          <div class="card-body">
+            <h5 class="card-title">{{a.titre}}</h5>
+            <p class="card-text">
+              {{a.texte}} </p>
+          </div>
+        </div>
+      </div>
+      <!--
+      <div class="col">
+        <div class="card">
+          <img src="../../assets/aboutus2.png" class="card-img-top" alt="Palm Springs Road" />
+          <div class="card-body">
+            <h5 class="card-title">Trouver un nouvel equilibre dans l'industrie automobile</h5>
+            <p class="card-text">
+              Le rythme de changement déjà vertigineux du secteur automobile s&rsquo;accélère. Ce rapport...
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="../../assets/aboutus3.png" class="card-img-top" alt="Los Angeles Skyscrapers" />
+          <div class="card-body">
+            <h5 class="card-title">L'impact du covoiturage sur le développement durable</h5>
+            <p class="card-text">Créer de la valeur pour les villes, les promoteurs immobiliers, les entreprises et
+              les....</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="../../assets/aboutus4.png" class="card-img-top" alt="Skyscrapers" />
+          <div class="card-body">
+            <h5 class="card-title">Mobilité durable</h5>
+            <p class="card-text">
+              La durabilité est de toute évidence un sujet crucial pour l&rsquo;industrie automobile, qui....
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="../../assets/aboutus5.png" class="card-img-top" alt="Los Angeles Skyscrapers" />
+          <div class="card-body">
+            <h5 class="card-title">L'impact du covoiturage sur le développement durable</h5>
+            <p class="card-text">Créer de la valeur pour les villes, les promoteurs immobiliers, les entreprises et
+              les....</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="../../assets/aboutus6.png" class="card-img-top" alt="Skyscrapers" />
+          <div class="card-body">
+            <h5 class="card-title">Mobilité durable</h5>
+            <p class="card-text">
+              La durabilité est de toute évidence un sujet crucial pour l&rsquo;industrie automobile, qui....
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="../../assets/aboutus7.png" class="card-img-top" alt="Los Angeles Skyscrapers" />
+          <div class="card-body">
+            <h5 class="card-title">L'impact du covoiturage sur le développement durable</h5>
+            <p class="card-text">Créer de la valeur pour les villes, les promoteurs immobiliers, les entreprises et
+              les....</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="../../assets/aboutus8.png" class="card-img-top" alt="Skyscrapers" />
+          <div class="card-body">
+            <h5 class="card-title">Mobilité durable</h5>
+            <p class="card-text">
+              La durabilité est de toute évidence un sujet crucial pour l&rsquo;industrie automobile, qui....
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="../../assets/aboutus9.png" class="card-img-top" alt="Los Angeles Skyscrapers" />
+          <div class="card-body">
+            <h5 class="card-title">L'impact du covoiturage sur le développement durable</h5>
+            <p class="card-text">Créer de la valeur pour les villes, les promoteurs immobiliers, les entreprises et
+              les....</p>
+          </div>
+        </div>
+      </div>-->
+    </div>
+    <br><br>
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-3 col-sm-6">
+              <div class="card-box bg-blue">
+                  <div class="inner">
+                      <h3 [countUp]="numberofPoles" [duration]="duration"></h3>
+                      <p>Numéro de poles </p>
+                  </div>
+                  <div class="icon">
+                      <i class="fa-brands fa-leanpub" aria-hidden="true"></i>
+                     
+                  </div>
+                  <a  class="card-box-footer" > View More <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+          </div> 
+  
+          <div class="col-lg-3 col-sm-6">
+              <div class="card-box bg-green">
+                  <div class="inner">
+                      <h3 [countUp]="perimetressnumber" [duration]="duration"> </h3>
+                      <p> Numéro de périmétres</p>
+                  </div>
+                  <div class="icon">
+                      <i class="fa-solid fa-bookmark" aria-hidden="true"></i>
+                  </div>
+                  <a  class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+              <div class="card-box bg-orange">
+                  <div class="inner">
+                      <h3 [countUp]="personnesnumber" [duration]="duration">  </h3>
+                      <p> Nombre de personnels </p>
+                  </div>
+                  <div class="icon">
+                      <i class="fa fa-user-plus" aria-hidden="true"></i>
+                  </div>
+                  <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+              <div class="card-box bg-red">
+                  <div class="inner">
+                      <h3 [countUp]="numberofCourses" [duration]="duration"> </h3>
+                      <p> Nombre de cours </p>
+                  </div>
+                  <div class="icon">
+                      <i class="fa fa-users"></i>
+                  </div>
+                  <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            
+          </div>
+      </div>
+  </div>
+    <div class="mx-4">
+      <div class="mx-4">
+        <h2 id="service-link" class="section__title col-12 col-md-10 mx-4">Our services <button
+            *ngIf="this.tokenService.isAdmin()==true" type="button" (click)="open(content)" class="btn btn-primary"><i
+              class="fa-solid fa-plus"></i></button>
+        </h2>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" *ngFor="let s of services">
+        <div class="card" style="width: 18rem;">
+          <img [src]="s.picByte" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text" id="cardText">{{s.titre}}</p>
+          </div>
+        </div>
+      </div>
+      <!--
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="../../assets/mypics/2.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text" id="cardText">Customer first</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="../../assets/mypics/3.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text" id="cardText">Cyber Security</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="../../assets/mypics/4.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text" id="cardText">Data and artificial intelligence</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="../../assets/mypics/5.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text" id="cardText">Entreprise Management</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="../../assets/mypics/6.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text" id="cardText">Intelligent Industry</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src="../../assets/mypics/7.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text" id="cardText">Sustainability</p>
+          </div>
+        </div>
+      </div>-->
+    </div>
+    <br><br>
+    <div class="row row-cols-2 row-cols-md-2 g-4">
+      <div class="col">
+
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+  <div class="embed-responsive embed-responsive-21by9" id="bd">
+
+    <!-- <iframe id="vid" class="embed-responsive-item mx-5" width="612" height="340"
+      src="https://www.youtube.com/embed/SqVrXUaVeeU" title="Capgemini Purpose" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe> -->
+      <video  id="vid" width="612" height="340" controls>
+        <source src="../../assets/vid.mp4" type="video/mp4">
+      </video>
+    <p id="img"><br> <br><br><br> <br><br><br> <br><br><br><br><br> <br><br><br> <br><br>
+    </p>
+
+  </div>
+  <br><br>
+  <div class="mx-4">
+    <div class="mx-4"> 
+  <h2 id="service-link" class="section__title col-12 col-md-10 mx-4">Statistics</h2>
+  </div>
+</div>
+  <div id="container">
+   
+    <a href="https://www.glassdoor.com/Overview/Working-at-Capgemini-EI_IE3803.11,20.htm" target="_blank"><img
+        class="center" src="../../assets/reviews.png" width="70%" height="100%" id="rev"></a>
+  </div>
+  <br>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+  <ng-template #content2 let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Add about Us</h4>
+
+      <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+        <i class="fas fa-times" id="crossC"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="form-group" [formGroup]="AboutUsForm">
+
+        <label for="texte">Title <span style="color:red">*</span></label>
+        <input class="form-control" value={{AboutUsForm.value.titre}} formControlName="titre" type="text">
+        <label for="texte">Text <span style="color:red">*</span></label>
+        <textarea class="form-control" rows="3" id="texte" class="form-control" value={{AboutUsForm.value.texte}}
+          formControlName="texte"></textarea>
+        <br>
+        <input formControlName="path" type="file" accept="image/*" class="form-control" id="customFile"
+          (change)="onFileChanged($event)" value={{AboutUsForm.value.path}} />
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+        Cancel
+      </button>
+      <button type="button" ngbAutofocus class="btn btn-outline-success" id="accept2" (click)="done1()">
+        Add
+      </button>
+    </div>
+  </ng-template>
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Add Service</h4>
+
+      <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+        <i class="fas fa-times" id="crossC"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="form-group" [formGroup]="sv">
+
+        <label for="texte">Title <span style="color:red">*</span></label>
+        <input class="form-control" value={{sv.value.titre}} formControlName="titre" type="text">
+        <br>
+        <input formControlName="path" type="file" accept="image/*" class="form-control" id="customFile"
+          (change)="onFileChanged($event)" value={{sv.value.path}} />
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+        Cancel
+      </button>
+      <button type="button" ngbAutofocus class="btn btn-outline-success" id="accept2" (click)="done2()">
+        Add
+      </button>
+    </div>
+  </ng-template>

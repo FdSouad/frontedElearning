@@ -1,0 +1,132 @@
+
+<div class="container">
+  <mat-card >
+    <div class="modal-header">
+      <strong><h2 class="modal-title ">Update catalog </h2></strong>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <span class="modal-body">
+  <br>
+
+    <mat-form-field appearance="outline">
+          <mat-label>Type</mat-label>
+             <select matNativeControl required ngDefaultControl>
+                <option [(ngModel)]="catalog.type">Interne</option>
+                <option [(ngModel)]="catalog.type">Externe</option>
+             </select>
+      </mat-form-field>
+        <br>
+      <mat-form-field appearance="outline">
+          <mat-label>Faisabilité</mat-label>
+             <select matNativeControl required ngDefaultControl>
+                <option [(ngModel)]="catalog.faisabilite">Oui</option>
+                <option [(ngModel)]="catalog.faisabilite">Non</option>
+             </select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label >Pole</mat-label>
+          <!--          <input matInput  >-->
+          <select matNativeControl required ngDefaultControl>
+            
+             <option [(ngModel)]="catalog.pole" [ngModelOptions]="{standalone:true}">DMA</option>
+
+          </select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Périmètre</mat-label>
+          <!--           <input matInput >-->
+          <select matNativeControl required ngDefaultControl>
+             <option  *ngFor="let p of perimetre" [(ngModel)]="catalog.perimetre">{{p}}</option>
+          </select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Catégorie</mat-label>
+          <select matNativeControl required ngDefaultControl>
+             <option [(ngModel)]="catalog.categorie">Métier</option>
+             <option [(ngModel)]="catalog.categorie" >Outils</option>
+             <option [(ngModel)]="catalog.categorie">Métier/Outils</option>
+             <option [(ngModel)]="catalog.categorie">Outils/Métier</option>
+           </select>
+
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Thème de la formation</mat-label>
+
+          <input matInput [(ngModel)]="catalog.theme" [ngModelOptions]="{standalone:true}" ngDefaultControl>
+
+          <!--          <select matNativeControl required>-->
+          <!--             <option value="dma" *ngFor="let t of theme">{{t}}</option>-->
+          <!--          </select>-->
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Objectifs pédagogiques</mat-label>
+
+          <input matInput [(ngModel)]="catalog.objectif" [ngModelOptions]="{standalone:true}" ngDefaultControl>
+
+          <!--          <select matNativeControl required>-->
+          <!--             <option value="dma" *ngFor="let o of objectifs">{{o}}</option>-->
+          <!--          </select>-->
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Public</mat-label>
+
+          <input matInput [(ngModel)]="catalog.publicc" [ngModelOptions]="{standalone:true}" ngDefaultControl >
+
+          <!--          <select matNativeControl required>-->
+          <!--             <option value="dma" *ngFor="let pu of Public">{{pu}}</option>-->
+          <!--          </select>-->
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Principaux points du programme</mat-label>
+
+          <input matInput [(ngModel)]="catalog.principaux" [ngModelOptions]="{standalone:true}" ngDefaultControl>
+
+        </mat-form-field>
+        <br>
+      <mat-form-field appearance="outline">
+          <mat-label>Formateur</mat-label>
+
+          <input matInput [(ngModel)]="catalog.formateur"  [ngModelOptions]="{standalone:true}" ngDefaultControl >
+
+        <!--        <select matNativeControl required>-->
+        <!--             <option value="dma" *ngFor="let f of formateur">{{f}}</option>-->
+        <!--          </select>-->
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+          <mat-label>Nb JH</mat-label>
+
+          <input matInput [(ngModel)]="catalog.nbjh" [ngModelOptions]="{standalone:true}" ngDefaultControl>
+
+        </mat-form-field>
+       <br>
+      <mat-form-field appearance="outline">
+          <mat-label>Avancement support de formation</mat-label>
+
+          <input matInput [(ngModel)]="catalog.avancement" [ngModelOptions]="{standalone:true}" ngDefaultControl >
+        </mat-form-field>
+       <br>
+       <div class="text-left">
+        <mat-checkbox [(ngModel)]="catalog.validated" [ngModelOptions]="{standalone:true}">Validé</mat-checkbox>
+      </div>
+
+
+      <br>
+        <button mat-raised-button color="primary" (click)="onSaveCatalogue()">
+          <mat-icon>done</mat-icon>
+         Save
+        </button>
+</span>
+  </mat-card>
+</div>
+

@@ -1,0 +1,310 @@
+
+
+
+
+
+
+
+
+
+
+<app-navbar></app-navbar>
+
+<div class="body">
+  <div class="tbody">
+<div class="ttbody">
+ 
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-sm-6">
+            <div class="card-box bg-blue">
+                <div class="inner">
+                    <h3> {{numberofDemand}} </h3>
+                    <p>Course to validate </p>
+                </div>
+                <div class="icon">
+                    <i class="fa-brands fa-leanpub" aria-hidden="true"></i>
+                   
+                </div>
+                <a  class="card-box-footer" (click)="getCourses()"> View More <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div> 
+
+        <div class="col-lg-3 col-sm-6">
+            <div class="card-box bg-green">
+                <div class="inner">
+                    <h3> 25 </h3>
+                    <p> Categories management </p>
+                </div>
+                <div class="icon">
+                    <i class="fa-solid fa-bookmark" aria-hidden="true"></i>
+                </div>
+                <a (click)="getCategories()" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card-box bg-orange">
+                <div class="inner">
+                    <h3> {{numberofUsers}} </h3>
+                    <p> Users management </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </div>
+                <a (click)="getUsers()" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card-box bg-red">
+                <div class="inner">
+                    <h3> 723 </h3>
+                    <p> xxxxxxxx </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-users"></i>
+                </div>
+                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-sm-6">
+          
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="display">
+    <div class="container-fluid p-0">
+	
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header pb-0">
+						<div class="card-actions float-right">
+							<div class="dropdown show">
+								<a href="#" data-toggle="dropdown" data-display="static">
+									<img [src]="aboutus.picByte" width="24" height="24" class="rounded-circle" *ngIf="aboutus">
+									<!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg> -->
+								</a>
+
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+							</div>
+						</div>
+						<h5 class="card-title mb-0">{{nameOfLink}} </h5>
+					</div>
+					<div class="card-body" >
+						<table class="table table-striped" style="width:100%">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Author</th>
+									<th>Created at</th>
+									<th>Link of {{nameOfLink}} </th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+							
+                                <tr *ngFor="let c of courses">
+									<td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+									<!-- <input type="hidden" > {{c.id}}</input> -->
+									<td> {{c.title}}</td>
+									<td> {{c.author}}</td>
+									<td> {{c.createdAt}}</td>
+									<td> <button class="router" (click)="router(c.id)">{{c.title }}</button></td>
+									<td><button (click)="accept(c.id)"><span class="badge bg-success">Accept</span></button>
+										<br>
+										<button (click)="delete(c.id)"><span class="badge bg-danger">Delete</span></button> </td>
+								</tr>
+								<tr *ngFor="let c of Categories">
+									<td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+									<!-- <input type="hidden" > {{c.id}}</input> -->
+									<td> {{c.titre}}</td>
+									<td> test</td>
+									<td> <a routerLink="" >{{c.titre}}</a></td>
+								
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class="col-xl-4">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-actions float-right">
+							<div class="dropdown show">
+								<a href="#" data-toggle="dropdown" data-display="static">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+								</a>
+
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+							</div> -->
+						<!-- </div> -->
+						<!-- <h5 class="card-title mb-0">Angelica Ramos</h5>
+					</div>
+					<div class="card-body">
+						<div class="row g-0">
+							<div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
+								<img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="64" height="64" class="rounded-circle mt-2" alt="Angelica Ramos">
+							</div>
+							<div class="col-sm-9 col-xl-12 col-xxl-9">
+								<strong>About me</strong>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+									magna aliqua.</p>
+							</div>
+						</div>
+
+						<table class="table table-sm mt-2 mb-4">
+							<tbody>
+								<tr>
+									<th>Name</th>
+									<td>Angelica Ramos</td>
+								</tr>
+								<tr>
+									<th>Company</th>
+									<td>The Wiz</td>
+								</tr>
+								<tr>
+									<th>Email</th>
+									<td>angelica@ramos.com</td>
+								</tr>
+								<tr>
+									<th>Phone</th>
+									<td>+1234123123123</td>
+								</tr>
+								<tr>
+									<th>Status</th>
+									<td><span class="badge bg-success">Active</span></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<strong>Activity</strong>
+
+						<ul class="timeline mt-2 mb-0">
+							<li class="timeline-item">
+								<strong>Signed out</strong>
+								<span class="float-right text-muted text-sm">30m ago</span>
+								<p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+							</li>
+							 <li class="timeline-item">
+								<strong>Created invoice #1204</strong>
+								<span class="float-right text-muted text-sm">2h ago</span>
+								<p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
+							</li>
+							<li class="timeline-item">
+								<strong>Discarded invoice #1147</strong>
+								<span class="float-right text-muted text-sm">3h ago</span>
+								<p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
+							</li> -->
+							<!--<li class="timeline-item">
+								<strong>Signed in</strong>
+								<span class="float-right text-muted text-sm">3h ago</span>
+								<p>Curabitur ligula sapien, tincidunt non, euismod vitae...</p>
+							</li>
+							<li class="timeline-item">
+								<strong>Signed up</strong>
+								<span class="float-right text-muted text-sm">2d ago</span>
+								<p>Sed aliquam ultrices mauris. Integer ante arcu...</p>
+							</li> -->
+						<!-- </ul>
+
+					</div>
+				</div>
+			</div> -->
+		</div>
+
+	</div>
+</div>
+<div class="container" *ngIf="user">
+    <div class="container-fluid p-0">
+	
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header pb-0">
+						<div class="card-actions float-right">
+							<div class="dropdown show">
+								<a href="#" data-toggle="dropdown" data-display="static">
+									<img [src]="aboutus.picByte" width="24" height="24" class="rounded-circle" *ngIf="aboutus">								</a>
+
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+							</div>
+						</div>
+						<h5 class="card-title mb-0">Users </h5>
+					</div>
+					<div class="card-body" >
+						<table class="table table-striped" style="width:100%">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>firstName</th>
+									<th>lastName</th>
+									<th>Birthday</th>
+									<th>pole </th>
+									<th>perimetre</th>
+									<th>Actions</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+                                <tr *ngFor="let u of users " >
+									<td *ngIf="(u.role=='consultant' || u.role=='specialiste') && u.email!=email"><img width="24" height="24" class="rounded-circle" *ngIf="aboutus"></td>
+									<!-- <input type="hidden" > {{c.id}}</input> -->
+									<td *ngIf="(u.role=='consultant' || u.role=='specialiste') && u.email!=email"> {{u.firstName}}</td>
+									<td *ngIf="(u.role=='consultant' || u.role=='specialiste') && u.email!=email"> {{u.lastName}}</td>
+									<td *ngIf="(u.role=='consultant' || u.role=='specialiste') && u.email!=email"> {{u.dateNaissance}}</td>
+									<td *ngIf="(u.role=='consultant' || u.role=='specialiste') && u.email!=email"> {{u.pole}}</td>
+									<td *ngIf="(u.role=='consultant' || u.role=='specialiste') && u.email!=email"> {{u.perimetre}}</td>
+									<td *ngIf="(u.role=='consultant' || u.role=='specialiste') && u.email!=email" ><button  class="badge" (click)="openConfirmationDialog(u.email,u.role)"><span  [ngStyle]="{'backgroundColor': u.role == 'specialiste' ? 'green' : 'red' }">{{u.role}}</span></button>
+										 </td> 
+										<!-- <button (click)="delete(c.id)"><span class="badge bg-danger">Delete</span></button>-->
+								</tr>
+								
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+
+	</div>
+</div>
+</div> 
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+<app-footer></app-footer>
+  

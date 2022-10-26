@@ -1,0 +1,38 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+
+<body>
+
+  <div class="new-matrix">
+    <button mat-fab color="primary" class="mt-4 ml-4  float-left" [routerLink]="['/Modulequiz/Responsablequiz']">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+    <button mat-fab color="primary" (click)="open()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <section class="mini " id="work-process">
+    <div class="mini-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3" *ngFor="let q of quizzes">
+            <a class="mini-box"
+              [href]="'/Modulequiz/Responsablequiz/Matrixes/Quizzes/Detailsquiz?skill='+q.name+'&matrix='+mat">
+              <i><img class="imageresize" src="assets/gg.png" width="110" height="160" alt=""></i>
+              <strong>{{q.name}}</strong>
+            </a>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</body>
+<footer>
+  <app-footer></app-footer>
+</footer>

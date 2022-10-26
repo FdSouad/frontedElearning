@@ -1,0 +1,123 @@
+<body>
+
+  <div class="w3-show-inline-block">
+
+    <a mat-fab color="primary" class="mt-4 ml-4  float-left" [href]="'/Pole/Perimetre?name='+Pole">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </a>
+
+    <button mat-fab color="primary" class="mt-4 ml-4 float-right" (click)="open(popup)">
+      <mat-icon>add</mat-icon>
+    </button>
+
+  </div>
+
+  <section class="mini " id="work-process">
+    <div class="mini-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3" *ngFor="let matrix of matrixes">
+            <!-- <div class="mini-box"> -->
+              <div class="card w-2000" >
+              <a
+                [href]="'/Pole/Perimetre/SkillsMatrix/DetailsSkillsMatrix?pole='+Pole+'&perimetre='+ Perimetre+'&name='+ matrix.name">
+                <i><img class="card-img-top"  [src]="matrix.icone" width="110" height="160" alt=""></i>
+                <div class="card-body">
+                <div class="card-title text-center font-weight-bold">{{matrix.name}}</div>
+              </div>
+              </a>
+              <!-- <button type="button" class="btn btn-outline-warning" id="warn" *ngIf="role!='consultant'"
+                (click)="open2(edit,matrix.name)">
+                <i class="fa-solid fa-pen" id="icon"></i> </button>
+              <button type="button" class="btn btn-danger" *ngIf="role!='consultant'"
+                (click)="open2(delete,matrix.name)">
+                <i class="fa-solid fa-trash-can"></i>
+              </button> -->
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<br><br><br>
+</body>
+<footer>
+  <app-footer></app-footer>
+</footer>
+
+<ng-template #popup let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title"></h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form class="form-group" [formGroup]="addForm">
+      <label for="name">Name <span style="color:red">*</span></label>
+      <input class="form-control" type="text" placeholder="Name ..." id="name" formControlName="name">
+      <br>
+      <input class="form-control" type="text" placeholder="icone ..." id="name" formControlName="icone">
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" ngbAutofocus class="btn btn-outline-primary" id="add" (click)="addMatrix()">
+      Add
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #edit let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title"></h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form class="form-group" [formGroup]="editForm">
+      <label for="newName">Name <span style="color:red">*</span></label>
+      <input class="form-control" type="text" placeholder="Name ..." id="newName" formControlName="newName">
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" ngbAutofocus class="btn btn-outline-primary" id="warn" (click)="editMatrix()">
+      Edit
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #delete let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title"></h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete
+      <span id="username">{{matrixeToDelEd}}</span> ?
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-outline-warning" id="delete" (click)="deleteMatrix()">
+      Delete
+    </button>
+  </div>
+</ng-template>

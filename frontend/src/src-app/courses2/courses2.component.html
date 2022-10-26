@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+
+
+<section class="features section">
+<div class="new-courses">
+  <button mat-fab color="primary" (click)="open()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<!--<div class="container-fluid ">-->
+<!--  <div class="row ml-3 mr-3 mt-4 mb-3 ">-->
+<!--    <div *ngFor="let course of courses" class="col-sm-2  ">-->
+<!--      <div class="card  mb-5 mt-3 ">-->
+<!--        <img src={{course.icon}} alt="..." class="card-img-top bg-info">-->
+<!--        <div class="card-body">-->
+<!--          <h5 class="card-title">{{course.title}}<i class="fa icons" [ngClass]="{-->
+<!--                 'fa-lock && text-secondary':course.privacy,-->
+<!--                 'fa-unlock-alt && text-info ':!course.privacy }"></i></h5>-->
+
+<!--          <p class="card-text">By : {{course.author}}</p>-->
+<!--          <small>-->
+<!--            <mat-icon class="matIcon">query_builder</mat-icon>-->
+<!--            {{course.duration}}</small>-->
+<!--        </div>-->
+<!--        <div class="card-footer text-center ">-->
+<!--          <button mat-raised-button color="accent">Discover</button>-->
+<!--          <button mat-raised-button color="primary">Enroll</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</div>-->
+
+
+
+
+<!--          <div class="row">-->
+<!--            <div class="col-*-*">-->
+<!--              <mat-icon >query_builder </mat-icon>-->
+<!--            </div>-->
+<!--            <div class="col-*-*">-->
+<!--              <p >{{course.duration}}</p>-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+  <div class="container">
+
+    <div class=" row features-inner section-inner">
+      <div class="features-header text-center">
+        <!--<div class="container-sm">
+            <h2 class="section-title mt-0">Here are your courses!</h2>
+        </div>-->
+      </div>
+      <div class="features-wrap">
+        <div class="feature text-center is-revealing" *ngFor="let course of courses">
+          <div class="feature-inner">
+            <img src={{course.icon}} class="card-img-top" alt="Cours-1 Image">
+            <h4 class="feature-title h3-mobile mb-8">{{course.title}}</h4>
+
+<!--            <p class="text-sm text-justify">{{course.description}}</p>-->
+
+            <br>
+            <br>
+            <div class="container text-left">
+              <p class="text-sm">By : {{course.author}}</p>
+              <mat-icon>query_builder</mat-icon>
+              <br>
+              <br>
+              <ngb-rating [(rate)]="course.currentRate"></ngb-rating>
+            </div>
+            <br>
+            <br>
+            <button mat-raised-button color="accent">Discover</button>
+            <button mat-raised-button color="primary">Enroll</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>

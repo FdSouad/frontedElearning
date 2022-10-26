@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class ViewQuestionsModel {\n  constructor() {\n    this.ques_id = 0;\n    this.answer = \"\";\n    this.content = \"\";\n    this.option1 = \"\";\n    this.option2 = \"\";\n    this.option3 = \"\";\n    this.quiz_id = 0;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

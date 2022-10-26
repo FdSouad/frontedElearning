@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<table class="table-bordered m-5">
+  <tr>
+    <th scope="row" class="col-3 bg-dark text-light">Consultant name</th>
+    <td class="col-2">mounir Idgharnen</td>
+  </tr>
+  <tr>
+    <th scope="row" class="col-3 bg-dark text-light">Team leader</th>
+    <td class="col-2">youssef Makrane</td>
+  </tr>
+  <tr>
+    <th scope="row" class="col-3 bg-dark text-light">Specialiste</th>
+    <td class="col-2">youssef Makrane</td>
+  </tr>
+  <tr>
+    <th scope="row" class="col-3 bg-dark text-light">Integration date</th>
+    <td class="col-2">04/04/2021</td>
+  </tr>
+</table>
+
+<ejs-schedule startHour='9:00' endHour='19:00' [eventSettings]='eventSettings' (eventRendered)="applyCategoryColor($event)">
+      <e-views>
+      <e-view option='WorkWeek' ></e-view>
+        <e-view option='Month' ></e-view>
+
+      </e-views>
+</ejs-schedule>
+
+<app-footer></app-footer>

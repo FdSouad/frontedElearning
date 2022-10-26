@@ -1,0 +1,262 @@
+<app-navbar></app-navbar>
+<div id="main-content" class="blog-page  col-12 ">
+  <div class="return">
+    <button mat-fab color="primary" class="mt-4 ml-4 " [routerLink]="['/Integration-path']">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+  </div>
+
+  <div class="container  col-12">
+    <div class="row">
+      <div class="col-8 left-box  ">
+        <div class="card  col-10 single_post ml-5 mt-4">
+
+        </div>
+        <!---->
+        <div class="card col-10 ml-5 border ">
+          <div class="body col-12 ">
+            <h1 class="mt-5"><strong>Phase 0: </strong> Pre-onboarding </h1>
+            <mat-stepper orientation="vertical">
+              <mat-step label="Organisation and generalities" state="phone">
+                <ul>
+                  <li><h3> Onboarding meeting <strong><span class="float-right">1h</span></strong></h3></li>
+                  <li><h3> Presentation of the team <strong><span class="float-right">2h</span></strong></h3></li>
+                  <li><h3> Materials reception (Laptop/ Badge,..)<strong><span class="float-right">1h</span></strong> </h3></li>
+                  <li><h3> Capgemini account creation <strong><span class="float-right">1h</span></strong></h3></li>
+                  <li><h3> EE account creation request <strong><span class="float-right">1h</span></strong></h3></li>
+                  <li><h3> Presentation about Capgemini <strong><span class="float-right">1h</span></strong></h3></li>
+                </ul>
+
+              </mat-step>
+              <mat-step label="Capgemini administrative tools" state="chat">
+                <strong><span class="float-right">2h</span></strong>
+              </mat-step>
+              <mat-step label="Capgemini Confidentiality aspect">
+                <strong><span class="float-right">2h</span></strong>
+              </mat-step>
+
+              <!-- Icon overrides. -->
+              <ng-template matStepperIcon="phone">
+                <mat-icon>call_end</mat-icon>
+              </ng-template>
+              <ng-template matStepperIcon="chat">
+                <mat-icon>forum</mat-icon>
+              </ng-template>
+            </mat-stepper>
+
+          </div>
+        </div>
+
+        <div class="card col-8 ml-5">
+
+        </div>
+        <section>
+          <div class="row">
+            <div class="container-fluid bg-light">
+            </div>
+          </div>
+
+        </section>
+        <!--        -->
+
+      </div>
+      <div class="col-lg-4 col-md-12 right-box">
+        <div class="card">
+          <div class="body search">
+            <div class="input-group m-b-0">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Search...">
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="header">
+            <h2></h2>
+          </div>
+          <div class="body widget">
+            <ul class="list-unstyled categories-clouds m-b-0">
+
+            </ul>
+          </div>
+        </div>
+        <div class="card m-b-30">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h2 class="card-title mb-0">Important Files</h2>
+              </div>
+
+          </div>
+          <div class="card-body">
+            <div class="product-file-type">
+              <ul class="list-unstyled">
+                <li class="media mb-3">
+                  <span class="mr-3 align-self-center img-icon primary-rgba text-primary">.doc</span>
+                  <div class="media-body">
+                    <h3 class="font-16 mb-1">Presentation about Capgemini
+                      <button  class="float-right" mat-icon-button color="primary" type="submit" (click)="downloadFile()">
+                        <mat-icon class="float-right text-primary">file_download</mat-icon>
+
+                      </button></h3>
+                    <p>.doc, 5.3 MB</p>
+                  </div>
+                </li>
+                <li class="media mb-3">
+                  <span class="mr-3 align-self-center img-icon success-rgba text-success">.xls</span>
+                  <div class="media-body">
+                    <h3 class="font-16 mb-1">Capgemini administrative tools
+                      <button  class="float-right" mat-icon-button color="primary" type="submit" (click)="downloadFile()">
+                        <mat-icon class="float-right text-primary">file_download</mat-icon>
+
+                      </button></h3>
+                    <p>.xls, 2.5 MB</p>
+                  </div>
+                </li>
+                <li class="media mb-3">
+                  <span class="mr-3 align-self-center img-icon danger-rgba text-danger">.pdf</span>
+                  <div class="media-body">
+                    <h3 class="font-16 mb-1">Capgemini Confidentiality aspect
+                      <button  class="float-right" mat-icon-button color="primary" type="submit" (click)="downloadFile()">
+                        <mat-icon class="float-right text-primary">file_download</mat-icon>
+
+                      </button></h3>
+                    <p>.pdf, 10.5 MB</p>
+                  </div>
+                </li>
+                <li class="media">
+                  <span class="mr-3 align-self-center img-icon info-rgba text-info">.zip</span>
+                  <div class="media-body">
+                    <h3 class="font-16 mb-1">Annual report
+                      <button  class="float-right" mat-icon-button color="primary" type="submit" (click)="downloadFile()">
+                        <mat-icon class="float-right text-primary">file_download</mat-icon>
+
+                      </button></h3>
+                    <p>.zip, 53.2 MB</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="header">
+            <h2>Email Newsletter </h2>
+          </div>
+          <div class="body widget newsletter">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Enter Email">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="icon-paper-plane"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid mt-4">
+  <h1>Presentation of the team</h1>
+  <section class="team-section py-5 ">
+    <div class="container ">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6  justify-content-center ">
+          <div class="card border-0 shadow-lg pt-5 my-5 " >
+            <div class="card-body p-4">
+              <div class="member-profile position-absolute w-100 text-center">
+                <img class="rounded-circle mx-auto d-inline-block shadow-sm" src="https://bootdey.com/img/Content/avatar/avatar1.png"  alt="">
+              </div>
+              <div class="card-text pt-1">
+                <h3 class="member-name mb-0 text-center text-primary font-weight-bold">Youssef Makrane</h3>
+                <div class="mb-3 text-center">Team Leader</div>
+              </div>
+            </div><!--//card-body-->
+          </div><!--//card-->
+        </div><!--//col-->
+
+        <div class="col-12 col-md-6">
+          <div class="card border-0 shadow-lg pt-5 my-5 position-relative">
+            <div class="card-body p-4">
+              <div class="member-profile position-absolute w-100 text-center">
+                <img class="rounded-circle mx-auto d-inline-block shadow-sm" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+              </div>
+              <div class="card-text pt-1">
+                <h3 class="member-name mb-0 text-center text-primary font-weight-bold">Asmaa </h3>
+                <div class="mb-3 text-center">Specialist</div>
+              </div>
+            </div><!--//card-body-->
+
+          </div><!--//card-->
+        </div><!--//col-->
+
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card border-0 shadow-lg pt-5 my-5 position-relative">
+            <div class="card-body p-4">
+              <div class="member-profile position-absolute w-100 text-center">
+                <img class="rounded-circle mx-auto d-inline-block shadow-sm" src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="">
+              </div>
+              <div class="card-text pt-1">
+                <h3 class="member-name mb-0 text-center text-primary font-weight-bold">Abir Hassini</h3>
+                <div class="mb-3 text-center">Software engineer</div>
+              </div>
+            </div><!--//card-body-->
+
+          </div><!--//card-->
+        </div><!--//col-->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card border-0 shadow-lg pt-5 my-5 position-relative">
+            <div class="card-body p-4">
+              <div class="member-profile position-absolute w-100 text-center">
+                <img class="rounded-circle mx-auto d-inline-block shadow-sm" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+              </div>
+              <div class="card-text pt-1">
+                <h3 class="member-name mb-0 text-center text-primary font-weight-bold">Mounir Idgharen</h3>
+                <div class="mb-3 text-center">Software engineer</div>
+              </div>
+            </div><!--//card-body-->
+
+          </div><!--//card-->
+        </div><!--//col-->
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card border-0 shadow-lg pt-5 my-5 position-relative">
+            <div class="card-body p-4">
+              <div class="member-profile position-absolute w-100 text-center">
+                <img class="rounded-circle mx-auto d-inline-block shadow-sm" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+              </div>
+              <div class="card-text pt-1">
+                <h3 class="member-name mb-0 text-center text-primary font-weight-bold">Ismail Slitni</h3>
+                <div class="mb-3 text-center">Software engineer</div>
+
+              </div>
+            </div><!--//card-body-->
+
+          </div><!--//card-->
+        </div><!--//col-->
+
+      </div><!--//row-->
+
+    </div>
+
+  </section>
+</div>
+
+
+
+  <div class="text-right mt-3 mb-2 mr-5">
+    <button mat-raised-button color="primary" > Next
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </button>
+  </div>
+</div>
+<app-footer></app-footer>
+
+
+
+

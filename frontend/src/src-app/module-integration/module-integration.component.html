@@ -1,0 +1,33 @@
+<header><app-navbar></app-navbar></header>
+<body>
+
+<div class="w3-show-inline-block">
+
+  <button mat-fab color="primary"  class="mt-4 ml-4  float-left" [routerLink]="['/menu']">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+
+  <button mat-fab color="primary" class="mt-4 ml-4 float-right" (click)="open()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</div>
+
+<section class="mini " id="work-process">
+  <div class="mini-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3" *ngFor="let pole of data.poles">
+          <a href="#" class="mini-box" routerLink="/PoleP/PerimetreP">
+            <i><img class="imageresize" src="assets/pole.jpeg"  alt=""></i>
+            <strong>{{pole.name}}</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+
+<footer><app-footer></app-footer></footer>

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var TypeCatalogue = /*#__PURE__*/(() => {\n  (function (TypeCatalogue) {\n    TypeCatalogue[TypeCatalogue[\"INTERNE\"] = 0] = \"INTERNE\";\n    TypeCatalogue[TypeCatalogue[\"EXTERNE\"] = 1] = \"EXTERNE\";\n  })(TypeCatalogue || (TypeCatalogue = {}));\n\n  return TypeCatalogue;\n})();","map":null,"metadata":{},"sourceType":"module"}

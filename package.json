@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@angular/youtube-player": "^14.1.0",
+    "@kolkov/angular-editor": "^3.0.0-beta.0",
+    "@syncfusion/ej2-angular-richtexteditor": "^20.3.47",
+    "ng-cdbangular": "^1.0.0",
+    "ng2-file-upload": "^1.4.0"
+  }
+}

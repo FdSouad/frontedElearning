@@ -1,0 +1,97 @@
+<!-- <div mat-dialog-content>
+    <angular-editor   [(ngModel)]="htmlContent" [config]="config"></angular-editor>
+    <h5 class="html-header">HTML Output</h5>
+     <div class="html" >{{ htmlContent }}</div> -->
+      <!-- <div [innerHTML]="htmlContent"> </div> 
+    <br>
+    <div class="mat-card-action" [align]="'end'">
+    <button mat-raised-button color="primary" type="submit">
+ 
+     <mat-icon>done</mat-icon>
+   
+   </button>
+   </div>
+</div>
+ --> 
+ <div mat-dialog-content>
+    <h2 center>Add chapter</h2>
+   <form  [formGroup]="CHapiterForm">
+     <div class="form-group" >
+       <label for="formGroupExampleInput">Number of chapter</label>
+       <input type="number" class="form-control" id="formGroupExampleInput" placeholder="number"  formControlName="numberOfChapter">
+   </div>
+   <br>
+   <div class="form-group" >
+       <label for="formGroupExampleInput">Title of chapter</label>
+       <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Titre"  formControlName="titre">
+   </div>
+   <br>
+       <!-- <label for="formGroupExampleInput">Content</label>
+       <input type="text" class="form-control" id="formGroupExampleInput" placeholder="content"  formControlName="htmlContent"> -->
+       <!-- <div class="form-group" >
+       <angular-editor formControlName="content" [config]="editorConfig"></angular-editor>
+       </div> -->
+       <!-- <label for="formGroupExampleTitreCH">Title</label>
+       <input type="number" class="form-control" id="formGroupExampleTitreCH" placeholder="Number of title"  formControlName="numberOfCh"> -->
+     
+     <!-- <div class="form-group">
+     <label  for="formGroupExamplen">Number of title</label>
+       <input 
+       (blur)="blurEvent($event)"
+         type="number" 
+         class="form-control" 
+         id="formGroupExamplen" 
+         placeholder="Number of title"
+        formControlName="numberOfCh">
+      </div>
+      <div class="form-group"  *ngFor="let dummy of ' '.repeat(number).split(''), let x = index">
+        <label  for="formGroupExampleTitreCH">Title {{x+1}}</label>
+        <input type="text"
+       class="form-control" 
+        id="formGroupExampleTitreCH" 
+        placeholder="The title"
+        formControlName="Titles"
+       > 
+    
+      </div> -->
+      <!-- form dynamisu
+      <div class="d-flex flex-wrap justify-content-between">
+      
+      <div formArrayName="titles" *ngFor="let title of titles.controls; let i = index">
+        <div [formGroupName]="i">
+          <label [for]="i"> Title {{ i+1 }}
+          </label>
+            <input
+              class="form-check-input"
+              [id]="i"
+              type="text"
+              [value]="CHapiterForm.value.titles[i].title"
+              class="form-control"
+              formControlName="title"
+              name="title"
+            >
+           
+        </div>
+      </div>
+      <div class="" >
+        
+        <button class="btn btn-primary ml-1  fa-plus" (click)="addTitle()" type="button">Add Title</button>
+      </div>
+       </div>
+       //fin form -->
+     <br>
+     <div class="form-group">
+       <div class="mat-card-action" [align]="'end'">
+       <button mat-raised-button color="primary" type="submit" (click)="addContent()">
+    
+         <mat-icon>done</mat-icon>
+       
+       </button>
+       </div>
+     </div>
+   </form>
+   </div>
+   
+   
+   
+   

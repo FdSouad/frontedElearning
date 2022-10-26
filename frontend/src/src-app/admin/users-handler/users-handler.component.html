@@ -1,0 +1,190 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="status ? 'show' : 'hide'  ">
+    <div class="sidebar-heading my-2 px-3" id="name"> <img src="../../assets/mypics/user1.jpg" width="50">
+      <span class=" my-1 px-3">{{name}} <br> <span id="role">({{role}})</span></span>
+    </div>
+    <div class="list-group list-group-flush" id="all">
+      <mat-accordion class="specific-class">
+        <mat-expansion-panel class="specific-class" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header id="panel" class="specific-class">
+          </mat-expansion-panel-header>
+
+          <a href="/handleusers" id="content1" class="list-group-item list-group-item-action bg-light"
+            *ngIf="this.tokenService.isSpecialiste()==true"><i class="fa-solid fa-user-check" aria-hidden="true"></i>
+            Specialiste space
+          </a>
+          <hr id="hr" *ngIf="this.tokenService.isSpecialiste()==true">
+
+          <a href="/changepass" id="content" class="list-group-item list-group-item-action bg-light">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            Change Password</a>
+          <hr id="hr">
+
+          <a id="content" class="list-group-item list-group-item-action bg-light" type="button" class="btn"
+            (click)="logout()">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            Sign out</a>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <div>
+        <a href="/Categories" id="linkat" class="list-group-item list-group-item-action bg-light"><i
+            class="fa-solid fa-book-atlas"></i> Courses</a>
+      </div>
+      <hr id="hr">
+
+      <a href="/Modulequiz" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-question"></i>
+        Quizz</a>
+      <hr id="hr">
+
+      <a href="/Catalogue" class="list-group-item list-group-item-action bg-light">
+        <i class="fa-solid fa-folder-open"></i> Catalogue</a>
+      <hr id="hr">
+
+      <a href="/RQ2" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-braille"></i>
+        R2Q</a>
+      <hr id="hr">
+
+      <a href="/PoleP" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-battery-half"></i>
+        Intégration</a>
+      <hr id="hr">
+      <br>
+      <br>
+      <br>
+
+    </div>
+  </div>
+
+  <!-- me -->
+  <mat-sidenav #sideNav mode="side" opened>
+    <div class="sid">
+      <app-side-bar></app-side-bar>
+    </div>
+  </mat-sidenav>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar  navbar-light bg-light">
+      <!-- Container wrapper -->
+      <div class=" container-fluid">
+        <button class="btn btn-primary" id="menu" (click)="clickEvent()"><i class="fa-solid fa-bars fa-lg"></i></button>
+        <a href="home">
+          <img class="rounded float-left"
+            src="https://capgemini-engineering.com/as-content/themes/altran/images/logo.svg" width="200">
+        </a>
+        <a href="home">
+          <img src="https://www.allengineeringprofiles.com/wp-content/uploads/2019/07/LogoMG2.png" width="100">
+        </a>
+        <ul class="nav navbar-nav navbar-right navbar-expand-sm">
+
+          <li class="nav-item dropdown mx-3 px-4">
+
+            <a class=" nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="me" [ngStyle]="{'color': 'transparent'
+            ,'font-size': '110%' }">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!--here-->
+
+
+
+    <br>
+    <br>
+    <div class="container">
+      <table class="table ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Pole</th>
+            <th scope="col">Perimetre</th>
+            <th scope="col">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-light" *ngIf="collectionSize==0">
+            <td colspan="6" scope="row">Aucun user non comfirmé</td>
+          </tr>
+          <tr *ngFor="let user of users">
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.pole }}</td>
+            <td>{{ user.perimetre }}</td>
+            <td>{{ user.role }}</td>
+            <button type="button" class="btn btn-success" id="accept" (click)="open(content2, user)"><i
+                class="fa-solid fa-check"></i></button>
+            <button type="button" class="btn btn-warning" id="reject" (click)="open(content, user)"><i
+                class=" fa-solid fa-xmark"></i></button>
+          </tr>
+        </tbody>
+      </table>
+
+      <mat-paginator [hidden]="collectionSize==0" (page)="onPaginateChange($event)" [length]="collectionSize "
+        [pageSize]="pageSize" [pageSizeOptions]=" [ 5, 10, 25]" aria-label="Select page">
+      </mat-paginator>
+
+<br><br><br><br><br><br><br><br>
+      <footer>
+        <app-footer></app-footer>
+      </footer>
+    </div>
+
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+
+        <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+          <i class="fas fa-times" id="crossC"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to reject
+          <span id="username">{{user.username}}</span> demand ?
+        </p>
+        <form class="form-group" [formGroup]="rejectForm">
+          <label for="raison">Comment <span style="color:red">*</span></label>
+          <textarea class="form-control" rows="3" id="raison" class="form-control" value={{rejectForm.value.raison}}
+            formControlName="raison"></textarea>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+          Cancel
+        </button>
+        <button type="button" ngbAutofocus class="btn btn-outline-warning" id="reject2" (click)="reject(user.email)">
+          Reject
+        </button>
+      </div>
+    </ng-template>
+    <ng-template #content2 let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+
+        <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+          <i class="fas fa-times" id="crossC"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to accept
+          <span id="username">{{user.username}}</span> demand ?
+        </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+          Cancel
+        </button>
+        <button type="button" ngbAutofocus class="btn btn-outline-success" id="accept2" (click)="accept(user.email)">
+          Accept
+        </button>
+      </div>
+    </ng-template>

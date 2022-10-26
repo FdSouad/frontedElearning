@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<body scroll="no" style="overflow: hidden" class="mt-1">
+
+<div class="w3-show-inline-block">
+  <h2 style="text-align: center;color: beige;">Presentation de l'Avancement des cours pour DMA</h2>
+  <button mat-fab color="primary"  class="mt-4 ml-4  float-left" onclick="location.href='http://localhost:4200/poleKPI'">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+
+  <button mat-fab color="primary" class="mt-4 ml-4 float-right" (click)="open()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+
+</div>
+<section class="mini " id="work-process">
+  <div class="chart" id="container" style=" margin-bottom: 30px;"></div>
+  <div class="mini-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3" *ngFor="let perimetre of data.perimetres">
+          <a class="mini-box" href="http://localhost:4200/poleKPI/perimetreKPI/consultantKPI">
+            <strong>{{perimetre.name}}</strong>
+            <i><img class="imageresize" src="assets/team.png" alt=""></i>
+            <mat-progress-bar mode="determinate" value="{{perimetre.prog}}"></mat-progress-bar>
+            <h4>{{perimetre.prog}}%</h4>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+<app-footer></app-footer>

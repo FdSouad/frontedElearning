@@ -1,0 +1,208 @@
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+<body>
+  <div class="sidebar" *ngIf="sidebar1">
+    <div class="logo-details">
+
+      <div class="logo_name">Integration</div>
+      <i class='bx bx-menu' id="btn" (click)="open()"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
+      </li>
+
+      <li>
+        <a href="/Integration-path">
+          <i class='bx bxs-battery-low'></i>
+          <span class="links_name">Integration path</span>
+        </a>
+        <span class="tooltip">Integration</span>
+      </li>
+
+      <li>
+        <a href="/Pole">
+          <i class='bx bxs-brain'></i>
+          <span class="links_name">Skills</span>
+        </a>
+        <span class="tooltip">Skills</span>
+      </li>
+
+      <li>
+        <a href="/Categories">
+          <i class='bx bx-book-bookmark'></i>
+          <span class="links_name">Courses</span>
+        </a>
+        <span class="tooltip">Courses</span>
+      </li>
+
+      <li>
+        <a href="/Catalogue">
+          <i class='bx bxs-folder-open'></i>
+          <span class="links_name">Catalogues</span>
+        </a>
+        <span class="tooltip">Catalogues</span>
+      </li>
+
+      <li>
+        <a href="/Modulequiz/Responsablequiz">
+          <i class='bx bx-question-mark'></i>
+          <span class="links_name">Quizz</span>
+        </a>
+        <span class="tooltip">Quizz</span>
+      </li>
+
+      <li>
+        <a href="/RQ2">
+          <i class='bx bx-grid'></i>
+          <span class="links_name">R2Q</span>
+        </a>
+        <span class="tooltip">R2Q</span>
+      </li>
+
+
+    </ul>
+  </div>
+
+
+  <div class="sidebar open" *ngIf="sidebar2">
+    <div class="logo-details">
+
+      <div class="logo_name">{{name}} <br> (<em>{{role}}</em>)</div>
+      <i class='bx bx-menu-alt-right' id=" btn" (click)="close()"></i>
+    </div>
+    <ul class="nav-list">
+
+      <li>
+        <a (click)=extend()>
+          <i class='bx bx-user'></i>
+          <span class="links_name">Profile
+          </span>
+          <i class='bx bx-down-arrow' *ngIf="a1"></i>
+          <i class='bx bx-up-arrow' *ngIf="a2"></i>
+        </a>
+        <span class="tooltip">Profile</span>
+        <ul class="nav-list" *ngIf="p">
+
+          <li style="margin-left: 18px;">
+
+            <a (click)=extendd()>
+              <i class='bx bxs-wrench'></i>
+              <span class="links_name">Settings</span>
+              <i class='bx bx-down-arrow' *ngIf="a3"></i>
+              <i class='bx bx-up-arrow' *ngIf="a4"></i>
+            </a>
+            <span class="tooltip">Settings</span>
+            <ul class="nav-list" *ngIf="pp">
+
+              <li style="margin-left: 24px;">
+
+                <a href="/changepass">
+                  <i class='bx bxs-lock-alt'></i>
+                  <span class="links_name">Change pass..</span>
+                </a>
+                
+                <span class="tooltip">Change pass..</span>
+              </li>
+              <li style="margin-left: 24px;">
+
+                <a href="/changePhoto">
+                  <i class='bx bxs-lock-alt'></i>
+                  <span class="links_name">Change pass..</span>
+                </a>
+                
+                <span class="tooltip">Change pass..</span>
+              </li>
+              <!--<li style="margin-left: 24px;">
+                <a href="#">
+                  <i class='bx bx-file'></i>
+                  <span class="links_namee">Tache 2</span>
+                </a>
+                <span class="tooltip">Tache 2</span>
+              </li>-->
+            </ul>
+          </li>
+          <li style="margin-left: 18px;" *ngIf="this.tokenService.isSpecialiste()==true">
+            <a href="/handleusers">
+              <i class='bx bxs-graduation'></i>
+              <span class="links_name">Specialiste space</span>
+            </a>
+            <span class="tooltip">Specialiste space</span>
+          </li>
+          <li style="margin-left: 18px;" *ngIf="this.tokenService.isSpecialiste()==true">
+            <a href="/TAdminWorkFlow">
+              <i class='fa-regular fa-gear'></i>
+              <span class="links_name">Dashboard</span>
+            </a>
+            <span class="tooltip">Specialiste dashboard</span>
+          </li>
+
+          <li style="margin-left: 18px;">
+
+            <a (click)="logout()" id="link">
+              <i class='bx bx-log-out'></i>
+              <span class="links_name">Sign out</span>
+            </a>
+            <span class="tooltip">Sign out</span>
+
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="/Integration-path">
+          <i class='bx bxs-battery-low'></i>
+          <span class="links_name">Integration path</span>
+        </a>
+        <span class="tooltip">Integration path</span>
+      </li>
+      <li>
+        <a href="/Pole">
+          <i class='bx bxs-brain'></i>
+          <span class="links_name">Skills matrix</span>
+        </a>
+        <span class="tooltip">Skills</span>
+      </li>
+      <li>
+        <a href="/Categories">
+          <i class='bx bx-book-bookmark'></i>
+          <span class="links_name">Courses</span>
+        </a>
+        <span class="tooltip">Courses</span>
+      </li>
+
+    
+      <li>
+        <a href="/Modulequiz/Responsablequiz">
+          <i class='bx bx-question-mark'></i>
+          <span class="links_name">Quizz</span>
+        </a>
+        <span class="tooltip">Quizz</span>
+      </li>
+      <li>
+        <a href="/RQ2">
+          <i class='bx bx-grid'></i>
+          <span class="links_name">Continuous 
+            improvement </span>
+        </a>
+        <span class="tooltip">R2Q</span>
+      </li>
+      <li>
+        <a href="/Catalogue">
+          <i class='bx bxs-folder-open'></i>
+          <span class="links_name">Catalogues</span>
+        </a>
+        <span class="tooltip">Catalogues</span>
+      </li>
+      <li>
+
+
+    </ul>
+  </div>
+
+
+</body>

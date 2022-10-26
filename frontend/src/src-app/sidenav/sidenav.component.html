@@ -1,0 +1,85 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper" [ngClass]="status ? 'show':'hide' ">
+    <div class="sidebar-heading my-2 px-3" id="name"> <img src="../../assets/mypics/user1.jpg" width="50">
+      <span class=" my-1 px-3">{{name}} <br> <span id="role">({{role}})</span></span>
+    </div>
+    <div class="list-group list-group-flush" id="all">
+      <mat-accordion class="specific-class">
+        <mat-expansion-panel class="specific-class" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header id="panel" class="specific-class">
+          </mat-expansion-panel-header>
+
+          <a href="/handleusers" id="content1" class="list-group-item list-group-item-action bg-light"
+            *ngIf="this.tokenService.isSpecialiste()==true"><i class="fa-solid fa-user-check" aria-hidden="true"></i>
+            Specialiste space
+          </a>
+          <hr id="hr" *ngIf="this.tokenService.isSpecialiste()==true">
+
+          <a href="/changepass" id="content" class="list-group-item list-group-item-action bg-light">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            Change Password</a>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <div>
+        <a href="/Categories" id="linkat" class="list-group-item list-group-item-action bg-light"><i
+            class="fa-solid fa-book-atlas"></i> Courses</a>
+      </div>
+      <hr id="hr">
+
+      <a href="/Modulequiz" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-question"></i>
+        Quizz</a>
+      <hr id="hr">
+
+      <a href="/Catalogue" class="list-group-item list-group-item-action bg-light">
+        <i class="fa-solid fa-folder-open"></i> Catalogue</a>
+      <hr id="hr">
+
+      <a href="/RQ2" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-braille"></i>
+        R2Q</a>
+      <hr id="hr">
+
+      <a href="/PoleP" class="list-group-item list-group-item-action bg-light"><i class="fa-solid fa-battery-half"></i>
+        Intégration</a>
+      <hr id="hr">
+      <br>
+      <br>
+      <br>
+
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar  navbar-light bg-light">
+      <!-- Container wrapper -->
+      <div class=" container-fluid">
+        <button class="btn btn-primary" id="menu" (click)="clickEvent()"><i
+            class="fa-solid fa-bars fa-5x	"></i></button>
+        <a href="home">
+          <img class="rounded float-left"
+            src="https://capgemini-engineering.com/as-content/themes/altran/images/logo.svg" width="200">
+        </a>
+        <a href="home">
+          <img src="https://www.allengineeringprofiles.com/wp-content/uploads/2019/07/LogoMG2.png" width="100">
+        </a>
+        <ul class="nav navbar-nav navbar-right navbar-expand-sm">
+
+          <li class="nav-item dropdown mx-3 px-4">
+
+            <a class=" nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="me" [ngStyle]="{'color': 'transparent'
+            ,'font-size': '110%' }">
+            </a>
+
+          </li>
+        </ul>
+
+      </div>
+      <app-home></app-home>
+
+    </nav>
+
+  </div>

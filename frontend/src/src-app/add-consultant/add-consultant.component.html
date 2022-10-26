@@ -1,0 +1,49 @@
+<div class="container">
+  <mat-card >
+    <div class="modal-header">
+      <strong><h2 class="modal-title ">Add new consultant</h2></strong>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <span class="modal-body">
+  <br>
+<form #basicForm="ngForm" (submit)="addConsultant(basicForm.value)">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput ngModel name="fullname">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>ID activity</mat-label>
+          <input matInput ngModel name="idActivite">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Current activity</mat-label>
+          <input matInput ngModel name="activiteActuelle">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Nature of activity</mat-label>
+          <input matInput ngModel name="natureActivite">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Tl/Sp</mat-label>
+          <input matInput ngModel name="userType">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Pole</mat-label>
+          <input matInput ngModel name="pole">
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" >
+          <mat-icon>done</mat-icon>
+          Add
+        </button>
+</form>
+</span>
+  </mat-card>
+</div>

@@ -1,0 +1,163 @@
+<app-navbar></app-navbar>
+<!-- <mat-sidenav #sideNav mode="side" opened>
+  <div class="sid">
+    <app-side-bar></app-side-bar>
+  </div>
+</mat-sidenav> -->
+<div class="return">
+  <button
+    mat-fab
+    color="primary"
+    class="mt-4 ml-4"
+    [routerLink]="['/Categories']"
+  >
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+</div>
+
+<!-- //photo -->
+<header class="item header margin-top-4 ml-4 mr-4 mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <div class="text-homeimage">
+          <div class="maintext-image"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="new-courses">
+  <button mat-fab color="primary" (click)="open()" title="Add Course">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<div class="new-courses">
+  <button mat-fab color="Dark" (click)="open2()" title="Your Courses">
+    <mat-icon>library_books</mat-icon>
+  </button>
+</div>
+
+<div class="container">
+  <!---->
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <form action="">
+        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+          <div class="input-group">
+            <input
+              type="search"
+              placeholder="What're you searching for?"
+              aria-describedby="button-addon1"
+              class="form-control border-0 bg-light"
+              name="keyword"
+              [(ngModel)]="keyword"
+              (change)="search()"
+            />
+            <div class="input-group-append">
+              <button
+                id="button-addon1"
+                type="submit"
+                class="btn btn-link text-primary"
+                (click)="search()"
+              >
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!--      </div>-->
+    </div>
+  </div>
+</div>
+<br /><br /><br />
+<div class="mt-5 text-center">
+  <h2 class="text-secondary">
+    Explore our courses to find your perfect program
+  </h2>
+</div>
+<br /><br />
+<div class="row ml-3 mr-3 mt-4 mb-3 p-5">
+  <div
+    class="rounded-1 course-box col-sm-2 mt-3 d-flex justify-content-around"
+    *ngFor="let course of courses"
+  >
+    <div class="card rounded-0 mb-3 mt-3">
+      <img src="{{ course.icon }}" alt="..." class="card-img-top img-fluid" />
+      <div class="card-body">
+        <!-- <h5 class="card-title">{{course?.title}}</h5> -->
+        <div class="divSpace">
+          <div class="title">
+            <h5 class="card-title">{{ course.title }}</h5>
+          </div>
+          <div class="icon">
+            <i
+              class="fa icons"
+              [ngClass]="{
+                'fa-lock && text-secondary': course.privacy === 'Private',
+                'fa-unlock-alt && text-info ': course.privacy === 'Public'
+              }"
+            >
+            </i>
+          </div>
+        </div>
+        <p class="card-text" style="">By : {{ course.author }}</p>
+        <div class="row">
+          <div class="col description mb-3" style="text-align: justify">
+            <mat-icon class="matIcon text-sm text-justify">
+              description
+            </mat-icon>
+            {{
+              readMore
+                ? course.description
+                : (course.description | slice: 0:100)
+            }}
+            <!-- <a class="readmore" *ngIf="!readMore" (click)="readMore=true">read more</a> 
+            <a   class="readmore" *ngIf="readMore" (click)="readMore=false">read less</a>  -->
+          </div>
+          <!-- <button type='button' ng-click="readMore()">read more</button> -->
+
+          <div class="col">
+            <ngb-rating
+              class="i"
+              style="text-align: center"
+              [(ngModel)]="course.currentRate"
+            ></ngb-rating>
+            <!-- (click)="UpdateRate()" -->
+            <div>
+              <mat-icon style="text-align: center" class="matIcon rating"
+                >grade</mat-icon
+              >
+              <b>{{ course.currentRate }}</b>
+            </div>
+          </div>
+        </div>
+        <!-- <p class="text-sm text-justify">{{course.description}}</p>-->
+      </div>
+      <div class="mb-4 text-center">
+        <!-- <button mat-raised-button color="accent"  (click)="IsAccessible(course)" (click)="getCourse(course.id,course.title)" [routerLink]="['./course-info',course?.id]" >Discover</button> -->
+
+        <button
+          mat-raised-button
+          color="accent"
+          *ngIf="course.emailOfUser != email"
+          (click)="IsAccessible(course)"
+        >
+          Discover
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          *ngIf="course.emailOfUser == email"
+          [routerLink]="['/courses/course-info', course?.id]"
+        >
+          Enroll
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

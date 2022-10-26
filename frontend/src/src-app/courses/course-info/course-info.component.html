@@ -1,0 +1,558 @@
+<app-navbar></app-navbar>
+<div id="body">
+  <div style="height: 150px; 
+  background-color: #2874A6;"
+  
+   id="conteneur">
+    <h1
+      class="h1Title"
+      style="       
+        text-align: center;
+        padding-top: 60px;
+        padding-top: 60px;
+        padding-top: 60px;
+      "
+    >
+      <strong class="text-white">{{ titreeCoursee }}</strong>
+    </h1>
+  </div>
+  <div id="main-content" class="blog-page col-12">
+    <div class="return">
+      <button
+        mat-fab
+        color="primary"
+        class="mt-4 ml-4"
+        [routerLink]="['/courses']"
+      >
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+    </div>
+
+    <div class="container col-12">
+      <div class="row">
+        <div class="col-8 left-box">
+          <div class="def card col-10 single_post ml-5 mt-5">
+            <div class="body">
+              <h3 >
+                <strong>{{ currentCourse?.title }}</strong>
+              </h3>
+              <p>
+                {{ currentCourse?.description }}
+              </p>
+              <br>
+              <img
+                src="{{ currentCourse.icon }}"
+                alt="..."
+                class="card-img-top img-fluid"
+                style="height: 27%;"
+              />
+            </div>
+          </div>
+
+          <div class="card col-10 ml-5 border">
+            <div class="header d-flex justify-content-between">
+              <strong
+                ><h1><div class="m-3">Table des matières</div></h1></strong
+              >
+              <div class="m-3 dropdown">
+                <button
+                  *ngIf="authorEmail == email"
+                  type="button"
+                  class="btn btn-primary ml-1 fa-solid fa-plus"
+                  (click)="addChapiter()"
+                ></button
+                >&nbsp;
+               
+                <mat-form-field *ngIf="authorEmail == email">
+                  <mat-label class="fa-solid fa-trash"></mat-label>
+                  <mat-select
+                    disableRipple
+                    [(value)]="selected"
+                    (selectionChange)="delete(selected)"
+                  >
+                    <mat-option
+                      *ngFor="let chapter of contents"
+                      [value]="chapter.id"
+                      >{{ chapter.titre }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="body col-12">
+              <mat-stepper orientation="vertical">
+                <mat-step *ngFor="let chapter of contents">
+                  <ng-template matStepLabel>
+                    <h2>
+                      <div class="c" *ngIf="chapter.emailOfUser == email">
+                        <p
+                          (click)="getIdOfChapter(chapter.id)"
+                          (click)="addContentOfChapter(chapter.id)"
+                        >
+                          {{ chapter.titre }}
+                        </p>
+                      </div>
+                    </h2>
+                    <h2>
+                      <div
+                        class="c"
+                        *ngIf="chapter.emailOfUser != email"
+                        (click)="getIdOfChapter(chapter.id)"
+                      >
+                        <p>{{ chapter.titre }}</p>
+                      </div>
+                    </h2>
+                  </ng-template>
+                  <div class="d" *ngFor="let c of ContentOfChapters">
+                    <h3>
+                      <div class="titles">
+                        <p (click)="lireContenu(c.contentOfTItle)">
+                          {{ c.titles }}
+                        </p>
+                      </div>
+                    </h3>
+                  </div>
+                </mat-step>
+              </mat-stepper>
+            </div>
+          </div>
+
+          <div class="card col-8 ml-5 border commentScrollBar">
+            <div class="header">
+              <h2>Comments</h2>
+            </div>
+            <div class="body">
+              <ul
+                class="comment-reply list-unstyled"
+                *ngFor="let comment of comments"
+              >
+                <li class="row clearfix">
+                  <div class="icon-box col-md-2 col-4">
+                    <img  class="img-fluid img-thumbnail" [src]="aboutus.picByte" width="40" height="40" class="rounded-circle" *ngIf="aboutus"/>       
+                   
+                  </div>
+                  <div class="text-box col-md-10 col-8 p-l-0 p-r0">
+                    <h5 class="m-b-0">{{ comment.name }}</h5>
+                    <p>{{ comment.text }}</p>
+                    <ul class="list-inline">
+                      <li><a href="javascript:void(0);">Reply</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <section>
+            <div class="row">
+              <div class="container-fluid bg-light"></div>
+            </div>
+          </section>
+        
+
+          <div class="card col-6 ml-5">
+            <div class="header">
+              <h3>
+                Leave a reply
+                <small
+                  >Your email address will not be published. Required fields are
+                  marked*</small
+                >
+              </h3>
+            </div>
+            <div class="body">
+              <div class="comment-form">
+                <form class="row clearfix" [formGroup]="commentB">
+         
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <textarea
+                        rows="4"
+                        class="form-control no-resize"
+                        formControlName="text"
+                        placeholder="Please type what you want..."
+                      ></textarea>
+                    </div>
+                    <br />
+                    <button
+                      type="submit"
+                      class="btn btn-block btn-primary"
+                      (click)="addComment()"
+                    >
+                      SUBMIT
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 right-box">
+  
+          <br />
+          <br />
+
+
+
+          <div>
+
+
+
+            <div class="card border p-3 mb-5 mt-2" style="">
+              <div class="d-flex justify-content-between">
+               
+              
+               
+                   <strong> <h2 mt-3>Requirements</h2></strong>
+                  
+                    <div >
+                      <div>
+                        <button    *ngIf="authorEmail == email" class="btn btn-primary ml-1 fa-solid fa-plus " type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        </button>
+                      </div>
+                 
+              </div>
+  
+               
+              </div>
+              <div class="card-body body widget ">
+                <div class="product-file-type " *ngFor="let item of requirements">
+                  <ul class="list-unstyled  categories-clouds m-b-0 "  >
+                      <li >
+                        <div class="d-flex justify-content-between">
+                          <div><a href="javascript:void(0);">{{ item.contenu}}</a></div>
+                            
+                         <div class="d"><button *ngIf="authorEmail == email" class="btn btn-danger  fa-solid fa-xmark " type="button"   style="margin-left:814%;color:red;background-color:white" (click)="deleteReq(item.id)">
+                           </button></div> 
+                         </div>
+                         
+                          
+                     
+                    </li>
+                
+                   
+                 
+                  </ul>
+                </div>
+              </div>
+          </div>
+  
+  
+  
+          <div>
+  
+  
+  
+            <div class="card border p-3 mb-5 mt-2 " style="margin-top:130px">
+              <div class="d-flex justify-content-between">
+               
+              
+               
+                   <strong> <h2 >Course objectives</h2></strong>
+                  
+                    <div >
+                      <div>
+                        <button    *ngIf="authorEmail == email"  class="btn btn-primary ml-1 fa-solid fa-plus " type="button"  data-bs-toggle="modal" data-bs-target="#objectifModal">
+                        </button>
+                      </div>
+                 
+              </div>
+  
+               
+              </div>
+              <div class="card-body body widget ">
+                <div class="product-file-type " *ngFor="let item of objectifs">
+                  <ul class=""  >
+                      <li >
+                        <div class="d-flex justify-content-between">
+                         <p> {{ item.contenu}}</p> <button *ngIf="authorEmail == email" class="btn btn-danger  fa-solid fa-xmark " type="button"   style="margin-right:-7%;color:red;background-color:white" (click)="deleteObjectif(item.id)">
+                          </button>
+                        </div>
+                        
+                     
+                    </li>
+                
+                   
+                 
+                  </ul>
+                </div>
+              </div>
+          </div>
+  
+  
+  
+  
+          <div>
+  
+  
+  
+            <div class="card border p-3 mb-5 mt-2 " style="margin-top:130px">
+              <div class="d-flex justify-content-between">
+               
+              
+               
+                   <strong> <h2 mt-3>Targeted population</h2></strong>
+                  
+                    <div >
+                      <div>
+                        <button     *ngIf="authorEmail == email" class="btn btn-primary ml-1 fa-solid fa-plus " type="button"  data-bs-toggle="modal" data-bs-target="#targetModal">
+                        </button>
+                      </div>
+                 
+              </div>
+  
+               
+              </div>
+              <div class="card-body body widget ">
+                <div class="product-file-type " *ngFor="let item of targets">
+                  <ul class=" "  >
+                      <li >
+                        <div class="d-flex justify-content-between">
+                          <p> {{ item.contenu}}</p> <button class="btn btn-danger  fa-solid fa-xmark " type="button"   style="margin-right:-7% ;color:red;background-color:white"   *ngIf="authorEmail == email" (click)="deleteTarget(item.id)">
+                           </button>
+                         </div>
+                         
+                     
+                    </li>
+                
+                   
+                 
+                  </ul>
+                </div>
+              </div>
+          </div>
+  
+  
+       
+  
+  
+            <div class="card border p-3 mt-2">
+              <div class="d-flex justify-content-between">
+               
+              
+               
+                   <strong> <h2 mt-3>Documents</h2></strong>
+                  
+                    <div >
+                      <span class="hidden-file">
+                        <input  hidden type="file" #fileInput ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" />
+                      </span>
+                      <div class="btn-group" (click)="fileInput.click()">
+                       
+                        <button *ngIf="authorEmail == email" type="button" class="btn fa fa-upload btn-primary">
+                           
+                        </button>
+                      </div>
+                 
+              </div>
+  
+               
+              </div>
+              <div class="card-body">
+                <div class="product-file-type">
+                  <ul class="list-unstyled">
+                    <!-- <li class="media mb-3 " *ngFor="let item of uploader.queue"> -->
+                      <li class="media mb-3 " *ngFor="let item of filesName">
+                      
+                      <div class="media-body">
+                        <!-- <h4 class=" mb-1">{{ item?.file?.name }} -->
+                          <div class="d-flex justify-content-between">
+                            <h4 class=" mb-1">{{ item }}
+                            
+                              <button  class="float-right" mat-icon-button color="primary" type="submit" (click)="downloadFile(item)">
+                                <mat-icon class="float-right text-primary">file_download</mat-icon>
+      
+                              </button></h4>
+                             <button *ngIf="authorEmail == email" class="btn btn-danger  fa-solid fa-xmark " type="button"   style="margin-right:-4% ;color:red;background-color:white" (click)="deleteRessource(item)">
+                             </button>
+                           </div>
+            
+                          <!-- <button type="button" class="btn  fa fa-trash" (click)="item.remove()">
+                            <span class="glyphicon glyphicon-trash "></span> 
+                          
+                           </button> -->
+                        <!-- <p>  {{ item?.file?.size/1024/1024 | number:'.2' }} MB</p> -->
+                      </div>
+                    </li>
+                
+                   
+                 
+                  </ul>
+                </div>
+              </div>
+          </div>
+  
+
+
+
+
+
+
+
+          <!-- <div>
+            <div class="card border p-3 mb-5 ">
+              <div class="d-flex justify-content-between">
+               
+              
+               
+                   <strong> <h2 mt-3>Requirements</h2></strong>
+                  
+                    <div >
+                      <div>
+                        <button   *ngIf="authorEmail == email" class="btn btn-primary ml-1 fa-solid fa-plus " type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        </button>
+                      </div>
+                 
+              </div>
+  
+               
+              </div>
+              <div class="card-body body widget ">
+                <div class="product-file-type " *ngFor="let item of requirements">
+                  <ul class="list-unstyled  categories-clouds m-b-0 "  >
+                      <li >
+                          <a href="javascript:void(0);">{{ item.contenu}}</a>
+                     
+                    </li>
+                
+                   
+                 
+                  </ul>
+                </div>
+              </div>
+          </div>
+  
+  
+  
+          <div>
+            <br /><br /><br />
+            
+ <div>
+
+
+
+  <div class="card border p-3">
+    <div class="d-flex justify-content-between">
+     
+    
+     
+         <strong> <h2 mt-3>Documents</h2></strong>
+        
+          <div >
+            <span class="hidden-file">
+              <input hidden type="file" #fileInput ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" />
+            </span>
+            <div class="btn-group" (click)="fileInput.click()">
+             
+              <button   *ngIf="authorEmail == email" type="button" class="btn fa fa-upload btn-primary">
+                 
+              </button>
+            </div>
+       
+    </div>
+
+     
+    </div>
+    <div class="card-body">
+      <div class="product-file-type">
+        <ul class="list-unstyled">
+            <li class="media mb-3 " *ngFor="let item of filesName">
+            
+            <div class="media-body">
+                <h4 class=" mb-1">{{ item }}
+                <button  class="float-right" mat-icon-button color="primary" type="submit" (click)="downloadFile(item)">
+                  <mat-icon class="float-right text-primary">file_download</mat-icon>
+
+                </button></h4>
+               
+            </div>
+          </li>
+      
+         
+       
+        </ul>
+      </div>
+    </div> -->
+</div>
+
+
+
+         
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container">
+            <form class="inputs form-control" [formGroup]="RequirementForm">
+              <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              
+              ">Requirement</label>
+              <br>
+              <br>
+              <input type="text" id="form1" class="form-control form-icon-trailing" formControlName="contenu" />
+              
+              <br>
+              <br>
+              <button type="button" class="btn btn-primary ml-3" (click)="onSaveRequirements()" >Save </button>
+              <button type="button" class="btn btn-secondary " data-bs-dismiss="modal" style="margin-left: 1%;">Close</button>
+            </form>
+           
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="objectifModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container">
+            <form class="inputs form-control" [formGroup]="ObjectifForm">
+              <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              
+              ">objectif</label>
+              <br>
+              <br>
+              <input type="text" id="form1" class="form-control form-icon-trailing" formControlName="contenu" />
+              <br>
+              <br>
+              <button type="button" class="btn btn-primary ml-3" (click)="onSaveObjectif()" >Save </button>
+              <button type="button" class="btn btn-secondary " data-bs-dismiss="modal" mat-stroked-button style="margin-left: 1%;" aria-label="Show an example snack-bar">Close</button>
+            </form>
+           
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="targetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container">
+            <form class="inputs form-control" [formGroup]="TargetForm">
+              <label style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+              ">Target sible</label>
+              <br>
+              <br>
+              <input type="text" id="form1" class="form-control form-icon-trailing" formControlName="contenu" />
+              <br>
+              <br>
+              <button type="button" class="btn btn-primary ml-3" (click)="onSaveTarget()" >Save </button>
+              <button type="button" class="btn btn-secondary " data-bs-dismiss="modal" style="margin-left: 1%;">Close</button>
+            </form>
+           
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

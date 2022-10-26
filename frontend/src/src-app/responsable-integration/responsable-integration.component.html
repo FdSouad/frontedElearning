@@ -1,0 +1,82 @@
+<header><app-navbar></app-navbar></header>
+<body >
+
+<div class="w3-show-inline-block">
+
+  <button mat-fab color="primary"  class="mt-4 ml-4  float-left" [routerLink]="['/PoleP']">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+
+  <button mat-fab color="primary" class="mt-4 ml-4 float-right" (click)="open()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</div>
+<section class="mini " id="work-process">
+  <div class="mini-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3" *ngFor="let perimetre of data.perimetres">
+          <div class="card w-2000" >
+          <a href="#" class="mini-box" routerLink="/PoleP/PerimetreP/List-paths">
+            <i><img class="card-img-top" src="assets/perimetre.jpg" alt=""></i>
+            <div class="card-body">
+              <div class="card-title text-center font-weight-bold">{{perimetre.name}}</div>
+          </div>
+          </a>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+<footer><app-footer></app-footer></footer>
+
+
+
+
+<!-- Modal -->
+<!--<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="staticBackdropLabel">Add Integration path to Consultant</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <form [formGroup]="formValuee" #basicForm="ngForm" >-->
+<!--      -->
+<!--          <div class="mb-3">-->
+<!--            <label for="exampleInputPassword1" class="form-label">Nom Consultant</label>-->
+<!--            <input type="text" formControlName="NomConsultant" class="form-control" id="exampleInputPassword1">-->
+<!--          </div>-->
+<!--         -->
+<!--          <div class="mb-3">-->
+<!--            <label for="exampleInputPassword1" class="form-label">image</label>-->
+<!--            <input type="url"  formControlName="image" class="form-control" id="exampleInputPassword1">-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Date Debut </label> -->
+<!--            &lt;!&ndash; formControlName="ddebut" &ndash;&gt;-->
+<!--            <input type="date"  class="form-control" > -->
+<!--            &lt;!&ndash; formControlName="dfin"  &ndash;&gt;-->
+<!--            <label for="exampleInputPassword1" class="form-label">Date Fin</label>-->
+<!--            <input type="date" class="form-control" >-->
+<!--          </div>-->
+<!--        </form>-->
+<!--   -->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--        <button *ngIf="add" type="button"  (click)="postpath()" class="btn btn-primary">Add</button>-->
+<!--        <button *ngIf="update" type="button"  (click)="updatepath()" class="btn btn-primary">Update</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+

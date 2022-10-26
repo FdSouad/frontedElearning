@@ -1,0 +1,42 @@
+<header><app-navbar></app-navbar></header>
+<body>
+
+<div class="new-responsable">
+<button mat-fab color="primary"  class="mt-4 ml-4  float-left" [routerLink]="['/menu']">
+  <mat-icon>arrow_back_ios</mat-icon>
+</button>
+<button mat-fab color="primary"  (click)="open()">
+  <mat-icon>add</mat-icon>
+</button>
+</div>
+
+<section class="mini " id="work-process">
+  <div class="mini-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <a href="#" class="mini-box" routerLink="/Modulequiz/Responsablequiz">
+            <i><img class="imageresize" src="assets/pole.jpeg"  alt=""></i>
+            <strong>Pole 1</strong>
+          </a>
+        </div>
+        <div class="col-lg-3" >
+          <a class="mini-box" routerLink="/Modulequiz/Responsablequiz">
+            <i><img class="imageresize" src="assets/pole.jpeg"  alt=""></i>
+            <strong>Pole 2</strong>
+          </a>
+        </div>
+        <div class="col-lg-3" >
+          <a  class="mini-box" routerLink="/Modulequiz/Responsablequiz">
+            <i><img class="imageresize" src="assets/pole.jpeg" alt=""></i>
+            <strong>Pole 3</strong>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+<footer><app-footer></app-footer></footer>

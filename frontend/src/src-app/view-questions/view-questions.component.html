@@ -1,0 +1,157 @@
+<app-navbar></app-navbar>
+
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+    <mat-card > <h1 class="mt10"> Add questions to {{qTitle}}</h1></mat-card>
+        <div class="new-matrix">
+            <button (click)="click()"  mat-fab color="primary" type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>  
+        <div class="row" *ngFor="let ques of questionsdata">
+            <mat-card class="mt10">
+          
+                
+                    
+                    <form class="example-form" >
+            <h2>Question {{ques.id}}            </h2>
+                      <div class="m">
+                            <h3>Question</h3>
+                       
+                           
+                            <input type="text" class="form-control"  value="{{ques.content}}" disabled>
+                          
+                           <h3>Answer</h3>
+                             
+                           
+                            <input type="text"   class="form-control"  value="{{ques.answer}}" disabled>
+                          
+                        
+                                          
+                          <table class="example-full-width" cellspacing="0"><tr>
+                            <td><h3>option1</h3>
+                                
+                                <input type="text"  class="form-control"  value="{{ques.option1}}" disabled>
+                             </td>
+                            <td>
+                                <h3>option2</h3>
+                              
+                               
+                                <input type="text"  class="form-control"  value="{{ques.option2}}" disabled>
+                             </td>
+                            <td><h3>option3</h3>
+                               
+                               
+                                <input type="text"  class="form-control"  value="{{ques.option3}}" disabled>
+                             </td>
+                          </tr></table>
+                        </div>
+                      </form>
+                <mat-card-actions align="end" class="ml">
+                    
+                            <table class="example-full-width" cellspacing="10"><tr>
+                            <td><button (click)="onedit(ques)"   type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" mat-raised-button color="primary">Update</button></td>
+                            <td><button (click)="deletequestions(ques)" mat-raised-button color="warn">Delete</button></td>
+                            </tr></table>
+                           
+                        </mat-card-actions>  
+               
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+  
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add Question</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formValuequestion" #basicForm="ngForm" >
+        
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Question</label>
+              <input type="text" formControlName="content" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Answer</label>
+                <input type="text" formControlName="answer" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Option 1</label>
+                <input type="text" formControlName="option1" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Option 2</label>
+                <input type="text" formControlName="option2" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Option 3</label>
+                <input type="text" formControlName="option3" class="form-control" id="exampleInputPassword1">
+              </div>
+             
+          </form>
+     
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button *ngIf="add" type="button"  (click)="postQuestions()" class="btn btn-primary">Add</button>
+          <button *ngIf="update" type="button"  (click)="updateQuestions()" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+     
+         <!-- <div class="container">
+            <div class="row">
+             <div class="col-lg-3" >
+             
+                  
+                <div>
+                    <mat-grid-list cols="1" rowHeight="500px">
+                      <mat-grid-tile>
+                        <div class="example-form">
+                         
+                          <mat-form-field  appearance="fill">
+                            <mat-label>Question</mat-label>
+                            <input matInput  value="{{ques.content}}" disabled>
+                          </mat-form-field>
+                          <br>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Answer</mat-label>
+                            <input matInput  value="{{ques.answer}}" disabled>
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>option1</mat-label>
+                            <input matInput  value="{{ques.option1}}" disabled>
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>option2</mat-label>
+                            <input matInput  value="{{ques.option2}}" disabled>
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>option3</mat-label>
+                            <input matInput  value="{{ques.option3}}" disabled>
+                          </mat-form-field>
+                         
+                          
+                        </div>
+                      </mat-grid-tile>
+                    </mat-grid-list>
+                  </div>
+                  
+                  
+                  
+                  
+                  
+               
+                
+                <button  mat-raised-button color="primary"  type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ajouter question</button>
+                 -->
+              

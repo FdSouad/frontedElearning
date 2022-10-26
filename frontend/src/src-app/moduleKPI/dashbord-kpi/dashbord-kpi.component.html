@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<body style="overflow:-moz-hidden-unscrollable" class="mt-1">
+
+
+
+    <div class="w3-show-inline-block">
+        <div class="new-matrix">
+          <h2 style="text-align: center;color: beige;">Presentation de l'Avancement des cours pour Mounir</h2>
+          <button mat-fab color="primary"  class="mt-4 ml-4  float-left" onclick="location.href='http://localhost:4200/poleKPI/perimetreKPI/consultantKPI'">
+          <mat-icon>arrow_back_ios</mat-icon>
+          </button>
+
+          <div class="chart"><div id="container"></div></div>
+          <div class="export-class">
+            <button mat-raised-button (click)="export()">Export</button>
+          </div>
+          <div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+              <!--- Note that these columns can be defined in any order.
+                    The actual rendered columns are set as a property on the row definition" -->
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="startDate">
+                <th mat-header-cell *matHeaderCellDef> start </th>
+                <td mat-cell *matCellDef="let element"> {{datePipe.transform(element.startDate,"dd/MM/yyyy ")}} </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="endDate">
+                <th mat-header-cell *matHeaderCellDef> end </th>
+                <td mat-cell *matCellDef="let element">{{datePipe.transform(element.endDate,"dd/MM/yyyy ")}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="validated">
+                <th mat-header-cell *matHeaderCellDef> validated </th>
+                <td  mat-cell *matCellDef="let element" class="text-center">
+                  <i [ngClass]=
+                  "{'text-success':element.validated,'text-danger':!element.validated}"
+                   class="m-xl-8">
+                    <i class="fa " [ngClass]="{'fa-check-circle':element.validated,'fa-times':!element.validated}"></i>
+                  </i>
+
+                </td>
+                <!-- <td mat-cell *matCellDef="let element"> {{element.validated}} </td> -->
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+          </div>
+        </div>
+
+
+    </div>
+
+
+<app-footer></app-footer>

@@ -1,0 +1,122 @@
+<header><app-navbar></app-navbar></header>
+<div class=" bg-light">
+  <div class=" row">
+<div class="image-back">
+  <div class="return">
+
+    <button mat-fab color="primary"  class="mt-4 ml-4 " [routerLink]="['/menu']">
+
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+  </div>
+
+    <div class="m-2 text-right ">
+      <button  mat-flat-button color="primary" (click)="open() ">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        New RQ2
+      </button>
+    </div>
+  </div>
+</div>
+  <table class="table table-responsive-ms ">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col" *ngFor="let champs of headers">{{champs}}</th>
+    </tr>
+    </thead>
+    <tbody data-bs-spy="scroll">
+
+    <tr>
+      <td>Compétences et processus</td>
+      <td class="text-center ">22</td>
+      <td class="text-center ">Proposer des templates à utiliser pour partager avec PSA les infos en toute
+        transparence
+      </td>
+      <td class="text-center ">Tarik RIFAY</td>
+      <td class="text-center ">Trame support présentation COPIL ==> Done</td>
+      <td class="text-center ">2</td>
+      <td class="text-center "></td>
+      <td class="text-center ">1</td>
+      <td class="text-center ">100%</td>
+      <td class="text-center ">1</td>
+      <td class="text-center "></td>
+    </tr>
+    <tr>
+      <td>Compétences et processus</td>
+      <td class="text-center ">24
+      </td>
+      <td class="text-center ">Proposer une FSL de préparation, tenue et restitution d'une réunion client
+      </td>
+      <td class="text-center ">Nawfal MAJDOUB</td>
+      <td class="text-center ">Action qualité, Points de contrôle intégrés dans les checklist d’audit qualité et R2Q ==> En cours</td>
+      <td class="text-center ">3</td>
+      <td class="text-center "></td>
+      <td class="text-center ">1</td>
+      <td class="text-center ">100%</td>
+      <td class="text-center ">1</td>
+      <td class="text-center "></td>
+    </tr>
+    <tr>
+      <td>Compétences et processus</td>
+      <td class="text-center ">25</td>
+      <td class="text-center ">Reprendre tous les templates de livraison avec le client pour être directement utilisables en interne PSA
+      </td>
+      <td class="text-center ">PWT : Les 4 TM Hassan ROUANE
+        MG2 : TOUS LES TM
+        SYST : Les 4 TM
+        Q&SC : Maryem SAHNOUN - Lamaye FAHHAMA,
+        FZ.GUEBBA</td>
+      <td class="text-center ">TFichier partager avec les TL ==> designer des pilotes pour deployer l'action sur l'ensemble des activités </td>
+      <td class="text-center ">1</td>
+      <td class="text-center ">A converger avec PSA</td>
+      <td class="text-center ">3</td>
+      <td class="text-center ">100%</td>
+      <td class="text-center ">3</td>
+      <td class="text-center "></td>
+    </tr>
+    <tr>
+      <td>Compétences et processus</td>
+      <td class="text-center ">26</td>
+      <td class="text-center ">Créer un sharepoint avec tous les templates livrables
+      </td>
+      <td class="text-center ">Nadège PREBET</td>
+      <td class="text-center ">Aucune réponse , relance faite ==> Attente retour du responsable de l'action</td>
+      <td class="text-center ">1</td>
+      <td class="text-center "></td>
+      <td class="text-center ">2</td>
+      <td class="text-center ">100%</td>
+      <td class="text-center ">2</td>
+      <td class="text-center "></td>
+    </tr>
+    <tr>
+      <td>Compétences et processus</td>
+      <td class="text-center ">53</td>
+      <td class="text-center ">Mettre en place un KPI sur le taux de réussite dans les temps des certifications
+      </td>
+      <td class="text-center ">Awatef HOSNI</td>
+      <td class="text-center ">Action en cours coté MG2 , Les matrices devraient être opérationnelles et donc officialisées fin Juin (fin de ce mois). Du coup dès l’officialisation on peut déployer l’action.==> Done</td>
+      <td class="text-center ">3</td>
+      <td class="text-center "></td>
+      <td class="text-center ">1</td>
+      <td class="text-center ">100%</td>
+      <td class="text-center ">1</td>
+      <td class="text-center "></td>
+    </tr>
+    <tr>
+      <td>Données d'entrées et criticités</td>
+      <td class="text-center ">54</td>
+      <td class="text-center ">Définir un critère criticité et réclamer systématiquement à PSA sa documentation (Normale / Forte)
+      </td>
+      <td class="text-center ">Hassan ROUANE</td>
+      <td class="text-center ">Processus de criticité ==> Presentation partagée avec les TL </td>
+      <td class="text-center ">1</td>
+      <td class="text-center ">A faire avec PSA</td>
+      <td class="text-center ">1</td>
+      <td class="text-center ">100%</td>
+      <td class="text-center ">1</td>
+      <td class="text-center "></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<app-footer></app-footer>

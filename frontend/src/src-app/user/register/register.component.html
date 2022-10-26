@@ -1,0 +1,204 @@
+ 
+<!-- <video id="background-video" autoplay loop muted>
+
+  <source src="../../../assets/r.mp4" type="video/mp4">
+  
+  </video> -->
+  <div class="body">
+    <div id="container">
+ 
+      <div class="row d-flex justify-content-center align-items-center h-100">
+       
+        <div class="col-lg-12 col-xl-11">
+          <div class="  text-black border-0">
+            <div class="  p-md-5">
+              <div class="row justify-content-center ">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 card-body p-5 shadow-5 formback" sty>
+                  <a href="#" class="previous round">&#8249;</a>
+                  <div class="imageIcon">
+                  <button type="button" class="btn btn-link btn-floating mx-4">
+                    <img  class="img11" src="/assets/icon/favicon.png">
+                  </button>
+                </div>
+                  <p class="text-white text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                  <div class="alert alert-success" role="alert" *ngIf="done==true">
+                    <p class="mb-0">You have successfully registered .</p>
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="err==true">
+                    <p class="mb-0">An error occurred during registration.</p>
+                    <hr>
+                    <p class="mb-0">Verifiy your information .</p>
+                  </div>
+                  <form class="mx-1 mx-md-4 " [formGroup]="infosInsc">
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div>
+                        <input type="text" id="firstName" class="form-control" id="sizing"
+                          value={{infosInsc.value.firstName}} formControlName="firstName" />
+                        <label class=" text-white  form-label" for="firstName">First Name</label>
+                        <div
+                          *ngIf="infosInsc.get('firstName')?.invalid && (infosInsc.get('firstName')?.touched || infosInsc.get('firstName')?.dirty )"
+                          style="color: red;">
+                          FistName is required.
+                        </div>
+                      </div>
+  
+                      <div>
+                        <input type="text" id="lastName" class="form-control" id="spacing"
+                          value={{infosInsc.value.lastName}} formControlName="lastName" />
+                        <label class=" text-white form-label" for="lastName">Last Name</label>
+                        <div
+                          *ngIf="infosInsc.get('lastName')?.invalid && (infosInsc.get('lastName')?.touched || infosInsc.get('lastName')?.dirty )"
+                          style="color: red;">
+                          LastName is required.
+                        </div>
+                      </div>
+    
+                    </div>
+    
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="email" id="email" class="form-control" id="sizing" value={{infosInsc.value.email}}
+                          formControlName="email" />
+                        <label class="text-white form-label" for="email">Email</label>
+                        <div
+                          *ngIf="infosInsc.get('email')?.invalid && (infosInsc.get('email')?.touched || infosInsc.get('email')?.dirty )"
+                          style="color: red;">
+                          Enter a valid email address
+                        </div>
+                      </div>
+                    </div>
+                   
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="form-outline flex-fill mb-0">
+                        <input formControlName="telephone" type="file" accept="image/*" class="form-control" id="customFile"
+                        (change)="onFileChanged($event)" value={{infosInsc.value.telephone}} />
+                        <label class="text-white form-label" for="photo">Your Picture</label>
+                       
+                      </div>
+                    </div>
+                    <!-- <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="tel" id="telephone" class="form-control" id="sizing"
+                          value={{infosInsc.value.telephone}} formControlName="telephone" />
+                        <label class="text-white form-label" for="telephone">Mobile Number</label>
+                       
+                      </div>
+                    </div> -->
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="password" id="password" class="form-control" id="sizing"
+                          value={{infosInsc.value.password}} formControlName="password" />
+                        <label class="text-white form-label" for="password">Password</label>
+                        <div
+                          *ngIf="infosInsc.get('password')?.invalid && (infosInsc.get('password')?.touched || infosInsc.get('password')?.dirty )"
+                          style="color: red;">
+                          <i class="fa-solid fa-exclamation"></i> at least 8 characters <br>
+                          <i class="fa-solid fa-exclamation"></i> must contains a number + uppercase + lowercase + symbol
+                        </div>
+                        <div *ngIf="!infosInsc.get('password')?.invalid" style="color: green;">
+                          <i class="fa-solid fa-check"></i> password strength.
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="password" id="password2" class="form-control" id="sizing"
+                          value={{infosInsc.value.password2}} formControlName="password2" />
+                        <label class="text-white form-label" for="password2">Confirm password</label>
+                        <div
+                          *ngIf="infosInsc.value.password2!=infosInsc.value.password&& infosInsc.value.password2!='' && (infosInsc.get('password2')?.touched || infosInsc.get('password2')?.dirty )"
+                          style="color: red;">
+                          <i class="fa-solid fa-exclamation"></i> Password and confirm password are not matching
+                        </div>
+                        <div
+                          *ngIf="infosInsc.value.password2==infosInsc.value.password && infosInsc.value.password2!='' && (infosInsc.get('password2')?.touched || infosInsc.get('password2')?.dirty )"
+                          style="color: green;">
+                          <i class="fa-solid fa-check"></i> Passwords match
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="form-outline flex-fill mb-0">
+                        <select class="form-select" aria-label="Default select example" id="pole" id="sizing"
+                          formControlName="pole" name="pole" (change)="getPerimetres($event)">
+                          <option>choose one</option>
+                          <option *ngFor="let pole of poles">
+                            {{pole.name}}
+                          </option>
+                        </select>
+                        <label class="form-label text-white" for="pole">Pole</label>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="form-outline flex-fill mb-0">
+                        <select class="form-select" aria-label="Default select example" id="perimetre" id="sizing"
+                          formControlName="perimetre" name="perimetre">
+                          <option>choose one</option>
+                          <option *ngFor="let per of perimetres">{{per.name}}
+                          </option>
+                        </select>
+                        <label class="form-label text-white" for="perimetre" value="infosInsc.value.perimetre">Perimetre</label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+    
+                      <div class="col-lg-10">
+    
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" formControlName="role" name="role" id="admin"
+                            value="admin" />
+                          <label class="form-check-label text-white" for="admin">Admin</label>
+                        </div>
+    
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="role" id="specialiste" value="specialiste"
+                            formControlName="role" />
+                          <label class="form-check-label text-white" for="specialiste">Specialiste</label>
+                        </div>
+    
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="role" id="consultant" value="consultant"
+                            formControlName="role" checked />
+                          <label class="form-check-label text-white" for="consultant">Consultant</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" formControlName="role" name="role" id="admin2"
+                            value="team_manager" />
+                          <label class="form-check-label text-white" for="admin">Team Manager</label>
+                        </div>
+                      </div>
+    
+                    </div>
+                    <!-- <div class="form-check d-flex justify-content-center mb-5">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                      <label class="form-check-label" for="form2Example3">
+                        I agree all statements in <a href="#!">Terms of service</a>
+                      </label>
+                    </div> -->
+    
+                    <div class="d-flex justify-content-center mx-4 mb-3 mt-3 mb-lg-4">
+                      <button type="button" class="btn btn-primary btn-block" id="btn" (click)=" sendRequest()"
+                        [disabled]="invalid()">Register</button>
+                    </div>
+    
+                  </form>
+    
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+    
+    
+              <img src="../../../assets/mockup.webp" class="img-fluid" alt="Sample image" width="250%">
+              <!-- <img src="../../../assets/mypics/register.png" class="img-fluid" alt="Sample image" width="250%"> -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{{print()}}
+{{onSubmit()}}

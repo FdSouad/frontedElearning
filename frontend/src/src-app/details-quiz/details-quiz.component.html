@@ -1,0 +1,167 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<mat-sidenav-container>
+  <mat-sidenav #sideNav mode="side" opened>
+    <div class="sid">
+      <app-side-bar></app-side-bar>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div id="contenaire">
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<body>
+  <!-- start Quiz button -->
+  <div class="start_btn" *ngIf="start && finalqu!='' && flag==false"><button (click)="start_btn()">Start Quiz</button>
+  </div>
+
+  <div>
+    <div class="info_box" *ngIf="finalqu==''">
+      <div class="info-list">
+        <i class="fa-solid fa-face-pensive"></i>
+        <div class=" info">😐 Ops ! This Quiz isn't available at the moment !
+        </div>
+        <div class="info">Please check later . </div>
+      </div>
+      <div class="buttons">
+        <a [href]="'Modulequiz/Responsablequiz/Matrixes/Quizzes?name='+mat">
+          <button class="quit">Back
+          </button></a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="info_box">
+    <!-- Info Box -->
+    <div class="info_box">
+      <div class="info-title"><span>Some Rules of this Quiz </span></div>
+      <div class="info-list">
+        <div class="info">1. You will have only <span>15 seconds</span> per each question.</div>
+        <div class="info">2. Once you select your answer, it can't be undone.</div>
+        <div class="info">3. You can't select any option once time goes off.</div>
+        <div class="info">4. You can't exit from the Quiz while you're playing.</div>
+        <div class="info">5. You'll get points on the basis of your correct answers.</div>
+      </div>
+      <div class="buttons">
+        <a [href]="'Modulequiz/Responsablequiz/Matrixes/Quizzes?name='+mat">
+          <button class="quit">Exit
+            Quiz</button></a> <button class="restart" (click)="startCountdown()">Continue</button>
+      </div>
+    </div>
+
+  </div>
+  <!-- Quiz Box -->
+  <div class="quiz_box" *ngIf="quiz_box">
+    <header>
+      <div class="title">Awesome Quiz Application</div>
+      <div class="timer">
+        <div class="time_left_txt">{{timer}}</div>
+        <div class="timer_sec" init="10">{{counter}}</div>
+      </div>
+      <div class="time_line"></div>
+    </header>
+    <section>
+      <div class="que_text">
+        <span>{{finalqu[index].i}} . {{ finalqu[index].quest}}</span>
+      </div>
+      <div class="option_list" #id>
+        <div class="option" (click)="check1(finalqu[index].rep[0],index)" *ngIf="op1 && finalqu[index].rep[0]!=null">
+          <span>{{finalqu[index].rep[0]}}</span>
+        </div>
+        <div class="option" *ngIf="op11 && finalqu[index].rep[0]!=null "
+          [ngStyle]="{ 'color': '#155724', background: '#d4edda',' border':' 1px solid #c3e6cb'}">
+          <span>{{finalqu[index].rep[0]}}</span>
+        </div>
+        <div class="option" *ngIf="op111 && finalqu[index].rep[0]!=null"
+          [ngStyle]="{ 'color': '#721c24', background: '#f8d7da',' border':' 1px solid #f5c6cb'}">
+          <span>{{finalqu[index].rep[0]}}</span>
+        </div>
+        <div class="option" (click)="check2(finalqu[index].rep[1],index)" *ngIf="op2 && finalqu[index].rep[1]!=null">
+          <span>{{finalqu[index].rep[1]}}</span>
+        </div>
+        <div class="option" *ngIf="op22 && finalqu[index].rep[1]!=null"
+          [ngStyle]="{ 'color': '#155724', background: '#d4edda',' border':' 1px solid #c3e6cb'}">
+          <span>{{finalqu[index].rep[1]}}</span>
+        </div>
+        <div class="option" *ngIf="op222&& finalqu[index].rep[1]!=null"
+          [ngStyle]="{ 'color': '#721c24', background: '#f8d7da',' border':' 1px solid #f5c6cb'}">
+          <span>{{finalqu[index].rep[1]}}</span>
+        </div>
+
+        <div class="option" (click)="check3(finalqu[index].rep[2],index)" *ngIf="op3 && finalqu[index].rep[2]!=null">
+          <span>{{finalqu[index].rep[2]}}</span>
+        </div>
+        <div class="option" *ngIf="op33 && finalqu[index].rep[2]!=null"
+          [ngStyle]="{ 'color': '#155724', background: '#d4edda',' border':' 1px solid #c3e6cb'}">
+          <span>{{finalqu[index].rep[2]}}</span>
+        </div>
+        <div class="option" *ngIf="op333 && finalqu[index].rep[2]!=null"
+          [ngStyle]="{ 'color': '#721c24', background: '#f8d7da',' border':' 1px solid #f5c6cb'}">
+          <span>{{finalqu[index].rep[2]}}</span>
+        </div>
+
+        <div class="option" (click)="check4(finalqu[index].rep[3],index)" *ngIf="op4 && finalqu[index].rep[3]!=null">
+          <span>{{finalqu[index].rep[3]}}</span>
+        </div>
+        <div class="option" *ngIf="op44 && finalqu[index].rep[3]!=null"
+          [ngStyle]="{ 'color': '#155724', background: '#d4edda',' border':' 1px solid #c3e6cb'}">
+          <span>{{finalqu[index].rep[3]}}</span>
+        </div>
+        <div class="option" *ngIf="op444 && finalqu[index].rep[3]!=null"
+          [ngStyle]="{ 'color': '#721c24', background: '#f8d7da',' border':' 1px solid #f5c6cb'}">
+          <span>{{finalqu[index].rep[3]}}</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- footer of Quiz Box -->
+    <footer>
+      <div class="total_que">
+        {{index+1}} of {{finalqu.length}} Questions
+      </div>
+      <button class="next_btn" *ngIf="next" (click)="change()">Next Que</button>
+    </footer>
+  </div>
+
+  <!-- Result Box -->
+  <div class="result_box" *ngIf="result_box">
+    <div class="icon">
+      <i class="fas fa-crown"></i>
+    </div>
+    <div class="complete_text">You've completed the Quiz!</div>
+    <div class="score_text">
+
+      <span *ngIf="bien">and congrats! 🎉, You got <p>{{userscore}}</p> out of <p>{{finalqu.length }}</p></span>
+      <span *ngIf="pass">and nice 😎, You got <p>{{userscore}}</p> out of <p>{{finalqu.length }}</p></span>
+      <span *ngIf="nul">and sorry 😐, You got only <p>{{userscore}}</p> out of <p>{{finalqu.length }}</p></span>
+    </div>
+    <div class="buttons">
+      <!--<a [href]="href">
+        <button class="restart">Replay Quiz</button></a>-->
+      <a [href]="'/Pole/Perimetre/SkillsMatrix/DetailsSkillsMatrix?pole='+pole+'&perimetre='+perimetre+'&name='+mat">
+        <button class="quit">Quit
+          Quiz</button></a>
+    </div>
+  </div>
+
+  <div class="result_box" *ngIf="flag">
+    <div class="icon">
+      <i class="fas fa-crown"></i>
+    </div>
+    <div class="complete_text">You've already passed the quiz!</div>
+    <div class="score_text">
+
+      <span *ngIf="bien">and congrats! 🎉, You got <p>{{userscore}}</p> out of <p>{{finalqu.length }}</p></span>
+      <span *ngIf="pass">and nice 😎, You got <p>{{userscore}}</p> out of <p>{{finalqu.length }}</p></span>
+      <span *ngIf="nul">and sorry 😐, You got only <p>{{userscore}}</p> out of <p>{{finalqu.length }}</p></span>
+    </div>
+    <div class="buttons">
+      <a [href]="'/Pole/Perimetre/SkillsMatrix/DetailsSkillsMatrix?pole='+pole+'&perimetre='+perimetre+'&name='+mat">
+        <button class="quit">Quit
+          Quiz</button></a>
+    </div>
+  </div>
+
+</body>

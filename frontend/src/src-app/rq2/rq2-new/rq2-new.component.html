@@ -1,0 +1,96 @@
+<div class="container">
+  <mat-card >
+    <div class="modal-header">
+      <strong><h2 class="modal-title ">Add a new R2Q </h2></strong>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <span class="modal-body">
+  <br>
+
+  <mat-form-field appearance="outline">
+          <mat-label>Theme</mat-label>
+             <input matInput [(ngModel)]="catalog.avancement" ngDefaultControl >
+      </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label >Numero</mat-label>
+           <input matInput [(ngModel)]="catalog.theme" ngDefaultControl>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Action detaillees</mat-label>
+          <input matInput [(ngModel)]="catalog.theme" ngDefaultControl>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Qui</mat-label>
+          <input matInput [(ngModel)]="catalog.theme" ngDefaultControl>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Commentaire</mat-label>
+          <input matInput [(ngModel)]="catalog.theme" ngDefaultControl>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Période</mat-label>
+          <input matInput [(ngModel)]="catalog.objectif"  ngDefaultControl>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Besoin contribution PSA</mat-label>
+          <input matInput [(ngModel)]="catalog.publicc" ngDefaultControl  >
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Poids</mat-label>
+          <select matNativeControl required  [(ngModel)]="catalog.type" ngDefaultControl>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </mat-form-field>
+
+        <br>
+
+      <mat-form-field appearance="outline">
+          <mat-label>Avancement</mat-label>
+          <input matInput [(ngModel)]="catalog.formateur" ngDefaultControl >
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field appearance="outline">
+          <mat-label>Bilan</mat-label>
+          <input matInput [(ngModel)]="catalog.avancement" ngDefaultControl >
+        </mat-form-field>
+
+       <br>
+        <button mat-flat-button>
+        <input type="file" formControlName="fichier" ngDefaultControl>
+      </button>
+      <br>
+
+
+
+      <br>
+        <button mat-raised-button color="primary"  type="submit">
+          <mat-icon>done</mat-icon>
+          Add
+        </button>
+
+
+</span>
+  </mat-card>
+</div>

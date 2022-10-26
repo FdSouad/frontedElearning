@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card >
+    <div class="modal-header">
+      <strong><h2 class="modal-title ">Add new Category</h2></strong>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <span class="modal-body">
+  <br>
+<form #basicForm="ngForm" (submit)="addCategory(basicForm.value)">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput ngModel name="name">
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary">
+          <mat-icon>done</mat-icon>
+          Add
+        </button>
+</form>
+</span>
+  </mat-card>
+</div>
+

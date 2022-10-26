@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Question {\n  constructor() {\n    this.idQuestion = \"\";\n    this.numero = \"\";\n    this.content = \"\";\n    this.answers = [];\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

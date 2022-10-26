@@ -1,0 +1,108 @@
+<div class="container">
+  <mat-card >
+    <div class="modal-header">
+      <strong><h2 class="modal-title ">Add a new reference </h2></strong>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <span class="modal-body">
+  <br>
+<form #basicForm="ngForm" (submit)="addCatalogue(basicForm.value)">
+  <mat-form-field appearance="outline">
+          <mat-label>Type</mat-label>
+             <select matNativeControl required  ngModel name="type" ngDefaultControl>
+                <option >Interne</option>
+                <option >Externe</option>
+             </select>
+      </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label >Pole</mat-label>
+          <!--          <input matInput  >-->
+          <select matNativeControl required  ngModel name="pole" ngDefaultControl>
+             <option >DMA</option>
+          </select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Perimeter</mat-label>
+          <select matNativeControl required ngModel name="perimeter" ngDefaultControl>
+             <option  *ngFor="let p of perimetre"  >{{p}}</option>
+          </select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <select matNativeControl required ngModel name="category" ngDefaultControl >
+             <option >Métier</option>
+             <option >Outils</option>
+             <option >Métier/Outils</option>
+             <option >Outils/Métier</option>
+           </select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Theme to capitalize</mat-label>
+          <input matInput ngModel name="theme" ngDefaultControl>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Educational goals</mat-label>
+          <input matInput ngModel name="goals"  ngDefaultControl>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Concerned public</mat-label>
+          <input matInput ngModel name="publique" ngDefaultControl  >
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Capitalization points</mat-label>
+          <input matInput ngModel name="point" ngDefaultControl>
+        </mat-form-field>
+
+        <br>
+
+      <mat-form-field appearance="outline">
+          <mat-label>Author</mat-label>
+          <input matInput ngModel name="author" ngDefaultControl >
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field appearance="outline">
+          <mat-label>Capitalization progress</mat-label>
+          <input matInput ngModel name="progresss" ngDefaultControl >
+        </mat-form-field>
+
+       <br>
+
+      <div class="text-left">
+        <mat-checkbox ngModel name="validated">Validated</mat-checkbox>
+      </div>
+
+
+
+      <br>
+        <button mat-raised-button color="primary">
+          <mat-icon>done</mat-icon>
+          Add
+        </button>
+</form>
+
+</span>
+  </mat-card>
+</div>

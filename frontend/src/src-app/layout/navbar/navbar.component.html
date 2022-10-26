@@ -1,0 +1,166 @@
+<!--Main Navigation-->
+<header>
+  <!-- Sidebar -->
+
+  <!-- Sidebar -->
+
+  <!-- Navbar -->
+  <nav id="main-navbar" class="navbar navbar-custom" id="navbar-custom">
+    <!-- Container wrapper -->
+    <div class=" container-fluid">
+      <!-- another dropdown -->
+      <!-- <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" style="border: 0px;"
+        data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon mt-2">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </span>
+      </button> -->
+      <a href="home">
+        <img class="rounded float-left" src="https://capgemini-engineering.com/as-content/themes/altran/images/logo.svg"
+          width="200">
+      </a>
+      <a href="home">
+        <img src="https://www.allengineeringprofiles.com/wp-content/uploads/2019/07/LogoMG2.png" width="100">
+      </a>
+      <button mr-5 mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <span class="notif material-icons" style="transform: rotate(0deg); font-size: 30px; color: rgb(35, 35, 155);">notifications</span>
+        <span class="badge">{{numberOfnotif}}</span>
+      </button>
+      
+      
+      
+      <mat-menu #menu="matMenu">
+        <button  mat-menu-item *ngFor="let notif of notifs">
+          <div  class="lire" (click)="lireContenu(notif.text)">
+          <!-- <span *ngIf="notif.typeOfNotif=='cours'"class="material-icons" style="color: rgb(0, 0, 128);">auto_stories</span> -->
+          <i  [ngStyle]="{'color': 'rgb(0, 0, 128);'}" *ngIf="notif.typeOfNotif=='cours'" class="fa fa-book" aria-hidden="true"></i>
+          <i [ngStyle]="{'color': 'rgb(0, 0, 128);'}" class="fa fa-user"  *ngIf="notif.typeOfNotif=='role'" aria-hidden="true"></i>
+          <!-- <span  style="color: rgb(0, 0, 128);"  *ngIf="notif.typeOfNotif=='cours'"class="material-icons">person</span> -->
+          &nbsp; <span >{{notif.text}}</span>
+        </div>
+        </button>
+        <div class="dropdown-divi"></div>
+        <!-- <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>-->
+       <button *ngIf="notifs.length!=0" (click)="supprimer()" class="d-flex align-items-center justify-content-center" style="background-color: rgb(236, 233, 233);" mat-menu-item>
+        <i [ngStyle]="{'color': 'red;'}" class="fa fa-trash" aria-hidden="true"></i>
+        &nbsp; <span >Supprimer</span>
+        </button> 
+      </mat-menu>
+      <ul class="nav navbar-nav navbar-right navbar-expand-sm">
+
+        <li class="nav-item dropdown mx-3 px-4">
+
+          <a class=" nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="me" [ngStyle]="{'color': '#0070AD'
+          ,'font-size': '110%' }">
+        
+          <img [src]="aboutus.picByte" width="40" height="40" class="rounded-circle" *ngIf="aboutus">          </a>
+          <div class="dropdown-menu position-absolute dropdown-menu-end" aria-labelledby="me">
+            <a class="dropdown-item" id="itemDr" type="button" class="btn">
+              Signed in as <br>
+              <nav id="name">{{name}}</nav>
+            </a>
+            <a class="dropdown-item" id="itemDr" type="button" class="btn" href="handleusers"
+              *ngIf="this.tokenService.isSpecialiste()==true">
+              <i class="fa-solid fa-user-check" [ngStyle]="{'color': '#0070AD'}" aria-hidden="true"></i>
+              Specialiste space
+            </a>
+            <a class="dropdown-item" id="itemDr" type="button" class="btn" href="changepass">
+              <i class="fa-solid fa-lock" [ngStyle]="{'color': '#0070AD'}" aria-hidden="true"></i>
+              Change Password
+            </a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" id="itemDr" type="button" class="btn" (click)="logout()">
+              <i class="fa fa-sign-out" [ngStyle]="{'color': '#0070AD'}" aria-hidden="true"></i>
+              Sign Out
+            </a>
+          </div>
+        </li>
+      </ul>
+      <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 " id="navigation">
+        <ul class="navbar-nav navbar-nav-hover mx-auto">
+          <li class="nav-item mx-3">
+            <a class="nav-link ps-1 d-flex justify-content-between cursor-pointer align-items-center navbar-text"
+              style="font-size: 110%;" role="button" href="/Pole">
+              <p id="depannage">waaaaa</p>
+              Skills <i class="fa-solid fa-angle-right"></i>
+              <p id="depannage">waaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+            </a>
+          </li>
+
+          <li class="nav-item mx-3">
+            <a class="nav-link ps-1 d-flex justify-content-between cursor-pointer align-items-center navbar-text"
+              role="button" style="font-size: 110%;" href="/Categories">
+              <p id="depannage">waaaallal</p>
+              Courses <i class="fa-solid fa-angle-right"></i>
+              <p id="depannage">waaaaaaaallalaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+            </a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link ps-1 d-flex justify-content-between cursor-pointer align-items-center navbar-text"
+              role="button" style="font-size: 110%;" href="/Modulequiz">
+              <p id="depannage">waaalla</p>
+              Quizz <i class="fa-solid fa-angle-right"></i>
+              <p id="depannage">waaaaalaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+            </a>
+          </li>
+
+          <li class="nav-item mx-3">
+            <a class="nav-link ps-1 d-flex justify-content-between cursor-pointer align-items-center navbar-text"
+              role="button" href="/Catalogue">
+              <p id="depannage">waaalal</p>
+              Catalogue <i class="fa-solid fa-angle-right"></i>
+              <p id="depannage">waaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item mx-3">
+            <a class="nav-link ps-1 d-flex justify-content-between cursor-pointer align-items-center navbar-text"
+              role="button" href="/RQ2">
+              <p id="depannage">waaaal</p>
+              R2Q <i class="fa-solid fa-angle-right"></i>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+            </a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link ps-1 d-flex justify-content-between cursor-pointer align-items-center navbar-text "
+              role="button" href="/PoleP">
+              <p id="depannage">waaaaal</p>
+              Intégration <i class="fa-solid fa-angle-right"></i>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+              <p id="depannage">waaaaaaaaaaaaaaaaaaaaa</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- End Navbar -->
+  <!-- Navbar -->
+</header>
+<!--Main Navigation-->

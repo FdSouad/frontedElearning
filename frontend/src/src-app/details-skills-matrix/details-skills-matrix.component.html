@@ -1,0 +1,620 @@
+<div>
+  <div class="image-back">
+    <div class="return">
+
+
+      <a mat-fab color="primary" class="mt-4 ml-4 mx-5 "
+        [href]="'/Pole/Perimetre/SkillsMatrix?name='+Perimetre+'&pole='+Pole">
+        <!--[routerLink]="['./..']"-->
+        <mat-icon>arrow_back_ios</mat-icon>
+      </a>
+    </div>
+
+    <br><br><br>
+    <div class="container">
+      <div class="col-md-12 text-center">
+        <button id="buttona" mat-raised-button color="primary" (click)="open(addSkill)" *ngIf="role != 'consultant'">
+          Add skill </button>
+        <button id="buttona" mat-raised-button color="accent" (click)="open(addCat)" *ngIf="role != 'consultant'"> Add
+          Categorie </button>
+        <button id="buttona" id="butcol" mat-raised-button color="primary" (click)="open(editCat)"
+          *ngIf="role != 'consultant'"> Edit
+          Categorie</button>
+        <button id="buttona" mat-raised-button color="warn" (click)="open(delCat)" *ngIf="role != 'consultant'"> Delete
+          Categorie </button>
+        <button id="buttona" id="butcol2" mat-raised-button color="warn" (click)="open(buckup)"
+          *ngIf="role != 'consultant'"> Historique </button>
+      </div>
+    </div>
+    <br><br><br><br><br><br><br>
+
+    <!-- <button id="buttona" mat-raised-button color="primary" (click)="addConsultant()"> Ajouter consultant </button>-->
+
+  </div>
+  <mat-tab-group animationDuration="0ms" (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="Infos">
+      <div class="example-container mat-elevation-z8">
+
+        <table id="infos-excel" class="table table-striped">
+          <thead>
+            <tr>
+              <th *ngFor="let column of displayedColumns" scope="col" class="col-tab">{{column}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let consultant of users">
+              <td>{{consultant.idDemandeur}}</td>
+              <td>{{consultant.username}}</td>
+              <td>{{consultant.email}}</td>
+              <td>{{consultant.pole}}</td>
+              <td>{{consultant.perimetre}}</td>
+              <td>{{consultant.role}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </mat-tab>
+    <mat-tab *ngFor="let category of categories" label={{category.name}}>
+      <div class="example-container mat-elevation-z8">
+        <table id="infos-excel" class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" colspan="7" class="items-center" *ngIf="category.skills.length != 0">Competences</th>
+            </tr>
+            <tr>
+              <th scope="col" class="col-tab"></th>
+              <th *ngFor="let skill of category.skills" scope="col" class="col-tab">
+                <a
+                  [href]="'/Modulequiz/Responsablequiz/Matrixes/Quizzes/Detailsquiz?pole='+Pole+'&perimetre='+Perimetre+'&matrix='+Matrixe+'&skill='+skill.name">
+                  {{skill.name}}</a>
+                <button *ngIf="role != 'consultant'" id="but" class="m-0 float-right mx-3" title='edit skill'
+                  (click)="open2(editSkill,skill)">
+                  <i id="icon" class="fa-solid fa-pencil"></i> </button>
+                <button *ngIf="role != 'consultant'" id="but" class="m-0 float-right mx-3" title="add question"
+                  (click)="open2(addQuestio,skill)">
+                  <i id="icon" class="fa-solid fa-plus"></i> </button>
+                <button *ngIf="role != 'consultant'" id="but" class="m-0 float-right mx-3" title='delete skill'
+                  (click)="open2(deleteSkill,skill)">
+                  <i id="icon" class="fa-solid fa-trash-can"></i> </button>
+                <button *ngIf="role != 'consultant'" id="but" class="m-0 float-right mx-3" title='see questions'
+                  (click)="openToSee(see,skill)">
+                  <i class="fa-solid fa-eye"></i></button>
+              </th>
+            </tr>
+            <tr>
+              <th *ngIf="category.skills.length != 0" scope="row">Criticite</th>
+              <td *ngFor="let skill of category.skills">{{skill.criticite}}</td>
+            </tr>
+            <tr>
+              <th scope="row" *ngIf="category.skills.length != 0">Niveau minimum</th>
+              <td *ngFor="let skill of category.skills">{{skill.niveauMin}}</td>
+            </tr>
+            <tr>
+              <th scope="row" *ngIf="category.skills.length != 0">Niveau cible</th>
+              <td *ngFor="let skill of category.skills">{{skill.niveauCible}}</td>
+            </tr>
+            <tr>
+              <th scope="row" *ngIf="category.skills.length != 0">SP/SC</th>
+              <td *ngFor="let skill of category.skills">{{skill.spSc}}</td>
+            </tr>
+            <tr>
+              <th scope="col" colspan="7" class="items-center">Consultants</th>
+            </tr>
+            <tr>
+              <th scope="col" colspan="10" class="col-tab">Nom Consultant</th>
+            </tr>
+          </thead>
+          <!-- <tbody>
+            <tr *ngFor="let consultant of data.consultants">
+              <td>{{consultant.fullname}}</td>
+              <td *ngFor="let skill of category.skills">{{skill.note}}</td>
+            </tr>
+          </tbody>-->
+          <tbody>
+            <tr *ngFor="let consultant of listeEtatUsers">
+              <td>{{consultant.user}}</td>
+
+              <td *ngFor="let n of consultant.notes">
+                <span *ngIf="n.note!=-1">{{n.note}} </span>
+                <span *ngIf="n.note==-1" id="mzl">0 </span>
+                <button type="button" class="btn btn-link mx-3 " id="fontdet"
+                  (click)="seeDetails(seeRep,n.skill,consultant.email)">see
+                  details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <!--<button mat-stroked-button color="primary" (click)="addToExcel()">Add to excel</button>-->
+  <button mat-stroked-button color="primary" id="buttona2" (click)="exportExcel()">Export excel</button>
+  <button mat-stroked-button color="primary" id="buttona2" (click)="invite()" *ngIf="role != 'consultant'">Invite
+    collab</button>
+  <!--
+  <mat-list>
+    <div mat-subheader>Folders</div>
+
+    <mat-list-item *ngFor="let folder of folders">
+      <mat-icon mat-list-icon>folder</mat-icon>
+      <div mat-line>{{folder.name}}</div>
+      <div mat-line> {{folder.updated }} </div>
+
+    </mat-list-item>
+  </mat-list>-->
+
+
+</div>
+
+<app-footer></app-footer>
+
+<ng-template #addCat let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Categorie</h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form class="form-group" [formGroup]="addFormCat">
+      <label for="name">Name <span style="color:red">*</span></label>
+      <input class="form-control" type="text" placeholder="Name ..." id="name" formControlName="name">
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" ngbAutofocus class="btn btn-outline-primary" id="add" (click)="addCategory()">
+      Add
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #addSkill let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Skill</h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form class="form-group" [formGroup]="addFormSkill">
+      <label for="name">Name <span style="color:red">*</span></label>
+      <input class="form-control" type="text" placeholder="Name ..." id="name" formControlName="name">
+      <br>
+
+      <div class="form-group">
+        <label for="categ">Categories *</label>
+        <select class="form-control" id="categ" aria-label="Default select example" formControlName="cat"
+          value="{{addFormSkill.value.cat}}">
+          <option>choose one</option>
+          <option *ngFor="let category of categories">{{category.name}}
+          </option>
+        </select>
+      </div>
+      <br>
+      <div class="d-flex flex-row align-items-center mb-4">
+        <span class="mx-5"></span>
+        <div class="form-group col-md-2 ">
+          <label class=" form-label" for="criticite">Criticité</label>
+
+          <input id="criticite" formControlName="criticite" type="number" class="form-control col-md-2" value="1"
+            min="0" max="10" step="1" />
+
+        </div>
+
+        <div class="form-group col-md-2 mx-4">
+
+          <label class=" form-label" for="nvm">Niveau Min</label>
+
+          <input id="nvm" formControlName="nvm" type="number" class="form-control col-md-2" value="1" min="0" max="10"
+            step="1" />
+
+        </div>
+
+        <div class="form-group col-md-2 mx-3">
+          <label class=" form-label" for="nvc">Niveau Cible</label>
+
+          <input id="nvc" formControlName="nvc" type="number" class="form-control col-md-2" value="1" min="0" max="10"
+            step="1" />
+
+        </div>
+
+      </div>
+      <div class="form-group">
+        <div class="col-lg-10">
+
+          <div class="form-check form-check-inline mx-3">
+            <span class="mx-5"><span class="mx-2">SP/SC : </span></span>
+
+          </div>
+          <div class="form-check form-check-inline">
+
+            <input class="form-check-input" type="radio" name="spSc" id="spSc" value="sp" formControlName="spSc" />
+            <label class="form-check-label" for="spSc">SP</label>
+          </div>
+
+
+          <div class="form-check form-check-inline mx-4">
+            <div class="mx-2">
+              <div class="mx-2">
+                <input class="form-check-input" type="radio" name="spSc" id="spSc" value="sc" formControlName="spSc"
+                  checked />
+                <label class="form-check-label" for="spSc">SC</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" ngbAutofocus class="btn btn-outline-primary" id="add" (click)="addSki()">
+      Add
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #addQuestio let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Question {{cpt}} for : <b><em style="color:blueviolet">{{skillForQuest.name}}</em></b>
+    </h4>
+
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="color:red"><em> <i class="fa-solid fa-triangle-exclamation"></i> as soon as you go to the next question
+        the
+        previous one is already
+        created</em></p>
+    <form class="form-group" [formGroup]="addQuestionForm">
+      <label for="quest">Question <span style="color:red">*</span></label>
+      <input class="form-control" type="text" placeholder="..." id="quest" formControlName="quest">
+      <br>
+      <label for="rep1Correcte">Correct Answer <span style="color:red">*</span></label>
+      <input class="form-control" type="text" placeholder="..." id="rep1Correcte" formControlName="rep1Correcte">
+      <br>
+      <label for="rep2">Second Choice <span style="color:red">*</span></label>
+      <input class="form-control" type="text" placeholder="..." id="rep2" formControlName="rep2">
+      <br>
+      <label for="rep3">3th Choice <span style="color:green">(opt)</span></label>
+      <input class="form-control" type="text" placeholder="..." id="rep3" formControlName="rep3">
+      <br>
+      <label for="rep4">4th Choice <span style="color:green">(opt)</span></label>
+      <input class="form-control" type="text" placeholder="..." id="rep4" formControlName="rep4">
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" id="cancel" (click)="deleteAllQuest()">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-outline-primary" id="next" (click)="nextOpen(addQuestio)">
+      Next
+    </button>
+    <button type="button" ngbAutofocus class="btn btn-outline-warning" id="warn" (click)="addQuestDone()">
+      Done
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #editSkill let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Skill</h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form class="form-group" [formGroup]="editFormSkill">
+      <label for="name">Name <span style="color:red">*</span></label>
+      <input class="form-control" type="text" placeholder="Name ..." id="name" formControlName="name">
+      <br>
+      <div class="d-flex flex-row align-items-center mb-4">
+        <span class="mx-5"></span>
+        <div class="form-group col-md-2 ">
+          <label class=" form-label" for="criticite">Criticité</label>
+
+          <input id="criticite" formControlName="criticite" type="number" class="form-control col-md-2" min="0" max="10"
+            step="1" />
+
+        </div>
+
+        <div class="form-group col-md-2 mx-4">
+          <label class=" form-label" for="nvm">Niveau Min</label>
+
+          <input id="nvm" formControlName="nvm" type="number" class="form-control col-md-2" min="0" max="10" step="1" />
+
+        </div>
+
+        <div class="form-group col-md-2 mx-3">
+          <label class=" form-label" for="nvc">Niveau Cible</label>
+          <input id="nvc" formControlName="nvc" type="number" class="form-control col-md-2" min="0" max="10" step="1" />
+
+        </div>
+
+      </div>
+      <div class="form-group">
+        <div class="col-lg-10">
+
+          <div class="form-check form-check-inline mx-3">
+            <span class="mx-5"><span class="mx-2">SP/SC : </span></span>
+
+          </div>
+          <div class="form-check form-check-inline">
+
+            <input class="form-check-input" type="radio" name="spSc" id="spSc" value="sp" formControlName="spSc" />
+            <label class="form-check-label" for="spSc">SP</label>
+          </div>
+
+
+          <div class="form-check form-check-inline mx-4">
+            <div class="mx-2">
+              <div class="mx-2">
+                <input class="form-check-input" type="radio" name="spSc" id="spSc" value="sc" formControlName="spSc"
+                  checked />
+                <label class="form-check-label" for="spSc">SC</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" ngbAutofocus class="btn btn-outline-primary" id="add" (click)="editSki()">
+      Edit
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #deleteSkill let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Delete Skill</h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete
+      <em id="username">{{skillForQuest.name}}</em> ?
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" ngbAutofocus class="btn btn-outline-danger" id="delete"
+      (click)="deleteSki(skillForQuest.name)">
+      Delete
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #delCat let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Delete Categorie</h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form class="form-group" [formGroup]="delFormCat">
+
+
+      <div class="form-group">
+        <label for="categ">Categories *</label>
+        <select class="form-control" id="categ" aria-label="Default select example" formControlName="cat"
+          value="{{addFormSkill.value.cat}}">
+          <option>choose one</option>
+          <option *ngFor="let category of categories">{{category.name}}
+          </option>
+        </select>
+      </div>
+      <br>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-outline-danger" (click)="deleteCategorie()">
+      Delete
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #see let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Questions - <em id="username">{{skillForDelAll.name}}</em></h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p *ngIf="questions.length==0"><em>No Question for this skill.</em>
+    </p>
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+      <ngb-panel title='Question {{quest.i}}' *ngFor="let quest of questions">
+
+        <ng-template ngbPanelContent>
+
+          <b>{{quest.quest}} ?</b>
+          <br>
+          <br>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-success">{{quest.rep1Correcte}}</li>
+            <li class="list-group-item list-group-item-danger">{{quest.rep2}}</li>
+            <li class="list-group-item list-group-item-danger" *ngIf="quest.rep3!=''">{{quest.rep3}}</li>
+            <li class="list-group-item list-group-item-danger" *ngIf="quest.rep4!=''">{{quest.rep4}}</li>
+          </ul>
+          <br>
+          <!--<div id="delB"> <button type="button" class="btn btn-outline-danger" (click)="deleteCategorie()">
+              Delete
+            </button></div>-->
+
+
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" *ngIf="questions.length!=0" class="btn btn-outline-danger" (click)="deleteAllQuest()">
+      Delete All
+    </button>
+    <button type="button" ngbAutofocus *ngIf="questions.length==0" class="btn btn-outline-primary" (click)="close()">
+      Ok
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #editCat let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Edit Categorie</h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form class="form-group" [formGroup]="editFormCat">
+
+
+      <div class="form-group">
+        <label for="newName">Name <span style="color:red">*</span></label>
+        <input class="form-control" type="text" placeholder="Name ..." id="newName" formControlName="newName">
+        <br>
+
+        <label for="categ">Categories *</label>
+        <select class="form-control" id="categ" aria-label="Default select example" formControlName="cat"
+          value="{{addFormSkill.value.cat}}">
+          <option>choose one</option>
+          <option *ngFor="let category of categories">{{category.name}}
+          </option>
+        </select>
+      </div>
+      <br>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-outline-warning" (click)="editCategorie()">
+      Edit
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #buckup let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Buckup</h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <br>
+    <form class="form-group" [formGroup]="Backup">
+
+      <div class="d-flex flex-row align-items-center mb-4">
+        <span class="mx-5"></span>
+
+
+        <div class="form-group col-md-2 mx-4">
+          <label class=" form-label" for="trimestre">Trimester</label>
+
+          <input id="trimestre" formControlName="trimestre" type="number" class="form-control col-md-2" min="1" max="4"
+            step="1" />
+        </div>
+
+        <div class="form-group col-md-2 mx-4">
+          <label class=" form-label" for="year">Year</label>
+          <input id="yaer" formControlName="year" type="number" class="form-control col-md-2" min="2000" max="2022"
+            step="1" />
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+
+    <button type="button" class="btn btn-outline-danger" (click)="backupFunction()">
+      Export
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #seeRep let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title"><em id="username">{{sk}}</em> - {{shkun}}</h4>
+
+    <button type="button" class="close" aria-label="Close" id="cross" (click)="d('Cross click')">
+      <i class="fas fa-times" id="crossC"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p *ngIf="reponses.length==0"><em>This user didn't pass the quiz !</em>
+    </p>
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+      <ngb-panel title='Question {{response.id}}' *ngFor="let response of reponses">
+
+        <ng-template ngbPanelContent>
+          <b>{{response.quest}} ?</b>
+          <br>
+          <br>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-success" *ngIf="response.state!=false">{{response.rep}}</li>
+            <li class="list-group-item list-group-item-danger" *ngIf="response.state==false">{{response.rep}}</li>
+          </ul>
+          <br>
+          <!--<div id="delB"> <button type="button" class="btn btn-outline-danger" (click)="deleteCategorie()">
+              Delete
+            </button></div>-->
+
+
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn btn-outline-dark" id="cancel" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" ngbAutofocus class="btn btn-outline-primary" (click)="close()">
+      Ok
+    </button>
+  </div>
+</ng-template>

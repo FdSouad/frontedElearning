@@ -1,0 +1,201 @@
+<header><app-navbar></app-navbar></header>
+
+<section class="image-back">
+<div class="row ">
+
+  <div class="new-catalog ml-3">
+    <button mat-flat-button color="primary" (click)="open()" >
+      <mat-icon>add</mat-icon>New reference
+    </button>
+  </div>
+<!--  <div class="col-md-6 text-right">-->
+<!--    <button class="btn btn-success" (click)="open()">-->
+<!--      <i class="fa fa-plus" aria-hidden="true"></i>-->
+<!--      New catalog-->
+<!--    </button>-->
+<!--  </div>-->
+  <!---->
+  <div class="row mb-5">
+    <div class="col-lg-8 mx-auto">
+      <!--      <div class=" p-5 rounded shadow">-->
+     <section>
+       <!-- Custom rounded search bars with input group -->
+       <form action="">
+         <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+           <div class="input-group">
+
+             <input type="search" placeholder="What are you searching ?" aria-describedby="button-addon1"
+                    [(ngModel)]="searchCat"
+                    [ngModelOptions]="{standalone:true}" class="form-control border-0 bg-light text-center">
+             <div class="input-group-append">
+               <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i>
+               </button>
+             </div>
+           </div>
+         </div>
+       </form>
+       <div class="row  ml-lg-5">
+         <div class="dropdown col">
+           <button class="btn btn-light dropdown-toggle col-10" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
+             Type
+           </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+             <li><button class="dropdown-item" type="button">Action</button></li>
+             <li><button class="dropdown-item" type="button">Another action</button></li>
+             <li><button class="dropdown-item" type="button">Something else here</button></li>
+           </ul>
+         </div>
+         <div class="dropdown col">
+           <button class="btn btn-light dropdown-toggle col-10" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+             ID
+           </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+             <li><button class="dropdown-item" type="button">Action</button></li>
+             <li><button class="dropdown-item" type="button">Another action</button></li>
+             <li><button class="dropdown-item" type="button">Something else here</button></li>
+           </ul>
+         </div>
+         <div class="dropdown col">
+           <button class="btn btn-light dropdown-toggle col-10" type="button" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false">
+             Pole
+           </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+             <li><button class="dropdown-item" type="button">Action</button></li>
+             <li><button class="dropdown-item" type="button">Another action</button></li>
+             <li><button class="dropdown-item" type="button">Something else here</button></li>
+           </ul>
+         </div>
+         <div class="dropdown col">
+           <button class="btn btn-light dropdown-toggle col-10" type="button" id="dropdownMenu4" data-bs-toggle="dropdown" aria-expanded="false">
+             Perimetre
+           </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+             <li><button class="dropdown-item" type="button">Action</button></li>
+             <li><button class="dropdown-item" type="button">Another action</button></li>
+             <li><button class="dropdown-item" type="button">Something else here</button></li>
+           </ul>
+         </div>
+         <div class="dropdown col">
+           <button class="btn btn-light dropdown-toggle col-10" type="button" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false">
+             Category
+           </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+             <li><button class="dropdown-item" type="button"></button></li>
+             <li><button class="dropdown-item" type="button">Another action</button></li>
+             <li><button class="dropdown-item" type="button">Something else here</button></li>
+           </ul>
+         </div>
+       </div>
+
+     </section>
+
+
+      <!--      </div>-->
+    </div>
+    <!--    -->
+    <!--    <form>-->
+    <!--      <div class="form-group form-inline">-->
+    <!--        <input  class="form-control ml-2" type="text" placeholder="Search ..."-->
+    <!--                [(ngModel)]="searchCat"-->
+    <!--                [ngModelOptions]="{standalone:true}"-->
+    <!--        />-->
+    <!--      </div>-->
+    <!--    </form>-->
+  </div>
+</div>
+</section>
+
+  <section>
+<!--    <div style="overflow-x:auto;" class=" p-5 rounded shadow">-->
+      <table  class="table table-hover table-bordered  mb-3">
+        <thead>
+        <tr class="text-center bg-transparent">
+          <th scope="col" *ngFor="let champs of headers">{{champs}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr scope="row"
+            *ngFor="let item of data.catalog"
+            class="col-sm-1">
+          <td class="text-center">{{item.type}}</td>
+          <td class="text-center ">{{item.iD}}</td>
+          <td class="text-center  ">{{item.pole}}</td>
+          <td class="text-center  ">{{item.perimeter}}</td>
+          <td class="text-center ">{{item.category}}</td>
+          <td class="text-center ">{{item.theme}}</td>
+          <td class="text-center c ">{{item.goals}}</td>
+          <td class="text-center ">{{item.publique}}</td>
+          <td class="text-center ">{{item.point}}</td>
+          <td class="text-center  ">{{item.author}}</td>
+          <td class="text-center ">{{item.progresss}}</td>
+          <td class="text-center   ">
+            <i [ngClass]="{
+      'text-success':item.validated,
+      'text-danger':!item.validated
+      }" class="m-xl-8">
+              <i class="fa " [ngClass]="{
+                 'fa-check-circle':item.validated,
+                 'fa-times':!item.validated}"></i>
+
+            </i>
+          </td>
+<!--          <td>-->
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <button class=" action-btn order-first btn btn-info btn-sm  " (click)="edit()">-->
+<!--                <i class="fa fa-pencil " aria-hidden="true"></i>-->
+<!--              </button>-->
+<!--              <button class="order-last btn btn-danger btn-sm" mwlConfirmationPopover-->
+<!--                      [popoverMessage]="popoverMessage"-->
+<!--                      (cancel)="cancelClicked=true"-->
+<!--                      (confirm)="deleteCatalogue(item.idCatalogue)">-->
+<!--                <i class="fa fa-trash " aria-hidden="true"></i></button>-->
+<!--            </div>-->
+
+<!--          </td>-->
+
+        </tr>
+
+        </tbody>
+      </table>
+      <ngb-pagination class="mx-3"
+                      [(page)]="page"
+                      [pageSize]="pageSize"
+                      [collectionSize]="catalogues.length"></ngb-pagination>
+<!--    </div>-->
+  </section>
+
+
+  <app-footer></app-footer>
+
+
+  <!--      <table class="table-responsive mt-3">-->
+  <!--        <thead>-->
+  <!--        <tr>-->
+  <!--          <th *ngFor="let champs of headers">{{champs}}</th>-->
+  <!--        </tr>-->
+  <!--        </thead>-->
+  <!--        <tbody>-->
+  <!--        <tr *ngFor="let item of catalogues">-->
+  <!--          <td>{{item.type}}</td>-->
+  <!--          <td>{{item.numero}}</td>-->
+  <!--          <td>{{item.faisabilite}}</td>-->
+  <!--          <td>{{item.pole}}</td>-->
+  <!--          <td>{{item.perimetre}}</td>-->
+  <!--          <td>{{item.categorie}}</td>-->
+  <!--          <td>{{item.theme}}</td>-->
+  <!--          <td>{{item.objectif}}</td>-->
+  <!--          <td>{{item.publicc}}</td>-->
+  <!--          <td>{{item.principaux}}</td>-->
+  <!--          <td>{{item.formateur}}</td>-->
+  <!--          <td>{{item.nbjh}}</td>-->
+  <!--          <td>{{item.avancement}}</td>-->
+  <!--          <td>-->
+  <!--            <button class=" btn btn-warning">edit</button>-->
+  <!--            <button class="btn btn-danger mx-3"> delete</button>-->
+  <!--          </td>-->
+  <!--        </tr>-->
+  <!--        </tbody>-->
+  <!--      </table>-->
+
+
+

@@ -1,0 +1,190 @@
+<app-navbar></app-navbar>
+
+<!-- <p>{{users.role}}</p> -->
+<!-- <div class="input-group w-50   justify-content-center">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <span class="input-group-text" id="basic-addon2">@example.com</span>
+  </div>
+</div> -->
+<!-- <div class="col-lg-8 mx-auto mt-5">
+
+  <form action="">
+    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4"  style="color:#483D8B">
+      <div class="input-group">
+        <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1"
+               class="form-control border-0 bg-light">
+        <div class="input-group-append" >
+          <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i
+            class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  
+</div> -->
+<!-- search -->
+
+<mat-sidenav #sideNav mode="side" opened>
+  <div class="sid">
+    <app-side-bar></app-side-bar>
+  </div>
+</mat-sidenav>
+
+
+<div class="body">
+  <button class="add" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+    +
+ </button>
+<section id="services" class="services  embed-responsive ">
+  <div data-bs-spy="scroll" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+    <!-- change height to increase the number of visible row  -->
+      <table class="table">
+        <thead class="white-text" style="background:#fff ;color:#483D8B;">
+      
+          <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let item of categories$ |async  ">
+            <th scope="row">{{item.titre}}</th>
+            <td>{{item.description}}</td>
+            <td><img [src]="item.image"></td>
+            <td><button type="button" class="fa-solid fa-trash-can" data-bs-toggle="modal" data-bs-target="#myModal" (click)="onDelete(item.id)"></button><button class="fa-solid fa-pen"  data-bs-toggle="modal" data-bs-target="#update" (click)="OnUpdate(item.id)" ></button></td>
+          </tr>
+          
+        </tbody>
+
+      </table>
+    </div>
+  <!-- <table class="table ">
+    <thead class="white-text" style="background:#fff ;color:#483D8B;">
+      
+      <tr>
+        <th scope="col">Titre</th>
+        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let item of categories$ |async  ">
+        <th scope="row">{{item.titre}}</th>
+        <td>{{item.description}}</td>
+        <td><img [src]="item.imageUrl"></td>
+        <td><button type="button" class="fa-solid fa-trash-can" data-bs-toggle="modal" data-bs-target="#myModal"></button><button class="fa-solid fa-pen"></button></td>
+      </tr>
+      
+    </tbody>
+  </table> -->
+</section>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container">
+          <div class="brand-logo"><img src="assets/icon/favicon.png"></div>
+          <form class="inputs" [formGroup]="CategorieForm">
+            <label>Categorie</label>
+            <input type="text"  formControlName="titre"/>
+            <label>Description</label>
+            <textarea formControlName="description"></textarea>
+            <label>Image Url</label>
+            <input type="text"   formControlName="image"/>
+            <button type="button" class="btn btn-primary butt" (click)="onSave()" >Save changes</button>
+            <button type="button" class="btn btn-secondary butt" data-bs-dismiss="modal">Close</button>
+          </form>
+         
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bolder text-danger fs-2 fst-italic" id="exampleModalLabel">Supprimer</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Êtes-vous sûr de vouloir supprimer?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="delete()"  data-bs-dismiss="modal" mat-stroked-button  aria-label="Show an example snack-bar">Supprimer</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container">
+          <div class="brand-logo"><img src="assets/icon/favicon.png"></div>
+          <form class="inputs" [formGroup]="CategorieForm">
+            <input type="hidden"  formControlName="id" >
+            <label>Categorie</label>
+            <input type="text"  formControlName="titre"  />
+            <label>Description</label>
+            <textarea formControlName="description"></textarea>
+            <label>Image Url</label>
+            <input type="text"   formControlName="image"/>
+            <button type="button" class="btn btn-primary butt" (click)="update()" >Save changes</button>
+            <button type="button" class="btn btn-secondary butt" data-bs-dismiss="modal">Close</button>
+          </form>
+         
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<app-footer></app-footer>
+

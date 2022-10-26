@@ -1,0 +1,311 @@
+<!-- </mat-card> -->
+
+  <!--    <div class="form-container">-->
+  <!--      <form [formGroup]="courseForm" (submit)="submit()" enctype="multipart/form-data">-->
+  <!--        <mat-card-content>-->
+  <!--          <br>-->
+
+  <!--          <mat-form-field appearance="outline">-->
+  <!--            <mat-label>Title</mat-label>-->
+  <!--            <input matInput formControlName="title" required>-->
+  <!--          </mat-form-field>-->
+  <!--          <br>-->
+  <!--          <mat-form-field appearance="outline">-->
+  <!--            <mat-label>Description</mat-label>-->
+  <!--            <input matInput formControlName="description" required>-->
+  <!--          </mat-form-field>-->
+  <!--          <br>-->
+  <!--          <mat-form-field appearance="outline" class="dropdown">-->
+  <!--            <mat-label>Language</mat-label>-->
+  <!--            <input matInput formControlName="language" required>-->
+  <!--            <mat-select>-->
+  <!--              <mat-option value="one">Frensh</mat-option>-->
+  <!--              <mat-option value="two">English</mat-option>-->
+  <!--            </mat-select>-->
+  <!--          </mat-form-field>-->
+  <!--          <br>-->
+  <!--          <br>-->
+  <!--          <mat-form-field appearance="outline">-->
+  <!--            <mat-label>Requirements</mat-label>-->
+  <!--            <input matInput formControlName="requirements" required>-->
+  <!--          </mat-form-field>-->
+  <!--          <br>-->
+  <!--          <mat-form-field appearance="outline">-->
+  <!--            <mat-label>Choose a date</mat-label>-->
+  <!--            <input matInput [matDatepicker]="picker" formControlName="startDate">-->
+  <!--            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+  <!--            <mat-datepicker #picker></mat-datepicker>-->
+  <!--          </mat-form-field>-->
+  <!--          <br>-->
+  <!--          <mat-form-field appearance="outline">-->
+  <!--            <mat-label>Image URL</mat-label>-->
+  <!--            <input matInput formControlName="icon">-->
+  <!--&lt;!&ndash;                      <angular-file-uploader&ndash;&gt;-->
+  <!--&lt;!&ndash;                        [config]="afuConfig">&ndash;&gt;-->
+  <!--&lt;!&ndash;                      </angular-file-uploader>&ndash;&gt;-->
+  <!--          </mat-form-field>-->
+  <!--          <br>-->
+  <!--        </mat-card-content>-->
+  <!--        <br>-->
+  <!--        <mat-card-actions>-->
+  <!--          <button mat-raised-button color="primary" type="submit" (click)="addCourse()">-->
+  <!--            <mat-icon>done</mat-icon>-->
+  <!--            Add-->
+  <!--          </button>-->
+  <!--        </mat-card-actions>-->
+  <!--      </form>-->
+  <!--    </div>-->
+
+  <button type="button" class="close close-button" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <!-- <mat-card-header class="mt-3">
+    <strong>
+      <mat-card-title>Add a new course</mat-card-title>
+    </strong>
+  </mat-card-header> -->
+  <div mat-dialog-title class="card"> <strong>Add a new course</strong></div>
+  <div mat-dialog-content>
+  <!-- <div><ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor></div> -->
+  <form [formGroup]="courseForm">
+  <!-- <mat-card-content > -->
+    <p class="alert alert-danger" *ngIf="courseForm.controls['description'].hasError('maxlength')">
+      Your description can not be more than 100 characters long.
+  </p>
+    <br>
+ 
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="course.title"   formControlName="title">
+    <!--[ngModelOptions]="{standalone: true}" -->
+       </mat-form-field> 
+    <br>
+    <!-- <div *ngIf="courseForm.controls['description].hasError('maxlength')">
+      Maximum of 100 characters
+    </div> -->
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="course.description"  
+        formControlName="description">
+    </mat-form-field>
+    <br>
+    <!--  *************************\/ test /\****************************-->
+    <!--        <mat-form-field appearance="outline">-->
+    <!--          <mat-label>Creator</mat-label>-->
+    <!--          <input matInput>-->
+    <!--          <input matInput [(ngModel)]="course.author">-->
+    <!--        </mat-form-field>-->
+    <!--        <br>-->
+    <!--  *************************\/ test /\****************************-->
+    <mat-form-field appearance="outline" class="dropdown">
+      <mat-label>Language</mat-label>
+      <!-- <input matInput [(ngModel)]="course.language"    formControlName="language"> -->
+      <mat-select matInput [(ngModel)]="course.language"  formControlName="language">
+        <mat-option value="one">Frensh</mat-option>
+        <mat-option value="two">English</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <!--  *************************\/ test /\****************************-->
+    <!--      <mat-form-field appearance="outline">-->
+    <!--        <mat-label>Year</mat-label>-->
+    <!--        <input matInput>-->
+    <!--        <input matInput [(ngModel)]="course.language">-->
+    <!--      </mat-form-field>-->
+    <!--  *************************\/ test /\****************************-->
+    
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Requirements</mat-label>
+      <input matInput [(ngModel)]="course.requirements" formControlName="requirements">
+    </mat-form-field> -->
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Image</mat-label>
+      <!-- <input formControlName="icon" matInput [(ngModel)]="course.icon" type="file" accept="image/*" class="form-control" id="customFile"
+      (change)="onFileChanged($event)" value={{courseForm.value.path}} /> -->
+      <input matInput [(ngModel)]="course.icon" formControlName="icon">
+    </mat-form-field>
+    <!-- <mat-form-field class="invisible" appearance="outline">
+      <mat-label>status</mat-label>
+      <input matInput formControlName="status">
+    </mat-form-field> -->
+    <!--  *************************\/ test /\****************************-->
+    <!--        <mat-form-field appearance="outline">-->
+    <!--          <mat-label>Last update date</mat-label>-->
+    <!--          <input matInput [(ngModel)]="course.lastUpdate">-->
+    <!--        </mat-form-field>-->
+    <!--  *************************\/ test /\****************************-->
+    <!-- <br> -->
+    <!--  *************************\/ test /\****************************-->
+<!--  -->
+
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Image URL</mat-label>
+      <ngx-mat-file-input  [multiple]="multiple" [accept]="accept" [color]="color" formControlName="icon" >
+        <mat-icon ngxMatFileInputIcon>insert_photo</mat-icon>
+      </ngx-mat-file-input>
+    </mat-form-field>
+     <br> -->
+
+   <!-- <mat-form-field appearance="outline" class="invisible">
+     <mat-label>Author</mat-label>
+     <input  matInput [(ngModel)]="course.author"  formControlName="author" required>
+   </mat-form-field> -->
+   <!-- <br> -->
+   <mat-form-field appearance="outline">
+    <mat-label>Privacy</mat-label>
+      <mat-select formControlName="privacy" >
+        <mat-option value="Public">Public</mat-option>
+        <mat-option value="Private">Private</mat-option>
+      </mat-select>
+   </mat-form-field>
+   <br>
+   <mat-form-field appearance="fill">
+    <mat-label>Created at</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="course.createdAt"  formControlName="createdAt">
+    <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+ 
+  <!-- <br>
+  <mat-form-field appearance="outline">
+   <mat-label>Duration</mat-label>
+   <input matInput [(ngModel)]="course.duration"  formControlName="duration">
+ </mat-form-field> -->
+ <!-- <br>
+  <mat-form-field appearance="outline">
+   <mat-label>Type</mat-label>
+   <input matInput [(ngModel)]="course.type"  formControlName="type">
+ </mat-form-field> -->
+
+ <!-- <br>
+  <mat-form-field appearance="outline">
+   <mat-label>In which categorie?</mat-label>
+   <input matInput [(ngModel)]="course.categorieId"  formControlName="categorieId">
+ </mat-form-field> -->
+ <!-- <br>
+ <mat-form-field appearance="outline">
+  <mat-label>User</mat-label>
+  <input matInput [(ngModel)]="course.user"  formControlName="user">
+</mat-form-field> -->
+
+<!-- <br> -->
+   <!-- <mat-form-field class="invisible" appearance="outline">
+    <mat-label>In which categorie?</mat-label>
+      <mat-select formControlName="categorie" >
+        <mat-option  *ngFor="let v of categorie"  [value]="v.id">{{ v.id }}</mat-option>
+      </mat-select>
+   </mat-form-field> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--      <div class="row">-->
+<!--        <mat-icon class=" mt-3 ">file_upload</mat-icon>-->
+<!--        <input matInput [(ngModel)]="course.icon" >-->
+<!--&lt;!&ndash;        <input type="file" (click)="selectImage($event)">&ndash;&gt;-->
+<!--      </div>-->
+
+      <!--                  <angular-file-uploader-->
+      <!--                    [config]="afuConfig">-->
+      <!--                  </angular-file-uploader>-->
+      <!--  *************************\/ test /\****************************-->
+   
+
+
+    <!--  *************************\/ test /\****************************-->
+
+  <!-- </mat-card-content> -->
+  <!--  *************************\/ test /\****************************-->
+  <br>
+  <!-- <mat-card-actions> -->
+    <div class="mat-card-action" [align]="'end'">
+     <button mat-raised-button color="primary" type="submit"(click)="onAddCourse()">
+     <!-- (click)="addCourse()"-->
+      <mat-icon>done</mat-icon>
+      {{actionBtn}}
+    </button>
+  <!-- </mat-card-actions> -->
+</div>
+</form>
+<!-- </mat-card> -->
+
+<!--  *************************\/ test /\****************************-->
+<!--<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">-->
+<!--  <mat-card fxFlex="50">-->
+<!--    <h2>Add a new course</h2>-->
+
+<!--    <mat-divider></mat-divider>-->
+<!--    <br>-->
+<!--    &lt;!&ndash;<form #addForm="ngForm" (ngSubmit)= "onAddCourse(addForm)">&ndash;&gt;-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Title</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Description</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Type</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Duration</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Creator</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Language</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Year</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Requirements</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Last update date</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Image URL</mat-label>-->
+<!--      <input matInput >-->
+<!--    </mat-form-field>-->
+<!--    <br>-->
+<!--    <button mat-raised-button color="primary">-->
+<!--      <mat-icon>done</mat-icon>-->
+<!--      Add-->
+<!--    </button>-->
+<!--    <br>-->
+
+<!--  </mat-card>-->
+<!--</div>-->
+</div>
